@@ -235,7 +235,7 @@ function draft() {
 			
 			// pick random from leaders pool
 			let draftedLeader = leadersPool[getRandomInt(0, leadersPool.length-1)];
-			let draftedMap = maps[getRandomInt(0, maps.length-1);
+			let draftedMap = maps[getRandomInt(0, maps.length-1)];
 			if (typeof draftedLeader == "undefined") {
 				document.getElementById("leadersPlayer"+player).innerHTML += "Not enough available leaders<br>";
 			}
