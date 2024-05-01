@@ -102,8 +102,8 @@ let maps = [
     {name: "Terra"}, 
     {name: "Tilted Axis"}, 
     {name: "Highlands"}, 
-    {name: "Wetlands"}
-]
+    {name: "Wetlands"},
+];
 
 
 // returns value of selected expansion (game type) radio button
