@@ -176,6 +176,10 @@ function playersSelected() {
 		playerListEl.innerHTML += "<div id='leadersPlayer"+i+"'></div></li><br><br>";
 	}
 	
+    let draftedMap = maps[getRandomInt(0, maps.length - 1)];
+    let mapDisplay = document.getElementById("map");
+    mapDisplay.innerHTML = "Map: " + draftedMap.name + "<br>";
+	
 	// show draft button
 	document.getElementById("draftButton").hidden = false;
 }
@@ -235,7 +239,6 @@ function draft() {
 			
 			// pick random from leaders pool
 			let draftedLeader = leadersPool[getRandomInt(0, leadersPool.length-1)];
-			let draftedMap = maps[getRandomInt(0, maps.length-1)];
 			if (typeof draftedLeader == "undefined") {
 				document.getElementById("leadersPlayer"+player).innerHTML += "Not enough available leaders<br>";
 			}
@@ -244,8 +247,6 @@ function draft() {
 				// show leader to player
 				document.getElementById("leadersPlayer"+player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/"+draftedLeader.img+"' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
 			}
-			if (i == parseInt(document.getElementById("numberOfLeaders").value) && player == parseInt(document.getElementById("numberOfPlayers").value)){
-				document.getElementById("leadersPlayer" + player).innerHTML += "<br>Map: " + draftedMap.name + "<br>";
 			}
 		}
 	}
