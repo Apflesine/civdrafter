@@ -244,9 +244,11 @@ function draft() {
 				// show leader to player
 				document.getElementById("leadersPlayer"+player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/"+draftedLeader.img+"' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
 			}
+			if (i == parseInt(document.getElementById("numberOfLeaders").value) && player == parseInt(document.getElementById("numberOfPlayers").value)){
+				document.getElementById("leadersPlayer" + player).innerHTML += "<br>Map: " + draftedMap.name + "<br>";
+			}
 		}
 	}
-        document.getElementById("leadersPlayer" + player).innerHTML += "Map: " + draftedMap.name + "<br>";
 }
 
 // inclusive
