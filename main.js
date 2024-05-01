@@ -78,6 +78,34 @@ let leaders = [
 	{name: "Yongle", civilization: "Chinese", paywall: "Leader Pass", expansion: "none", banned: false, img:"5/5a/Yongle_%28Civ6%29.png"},
 ];
 
+let maps = [
+    {name: "Fractal"}, 
+    {name: "Inland Sea"}, 
+    {name: "Island Plates"}, 
+    {name: "Pangaea"}, 
+    {name: "Shuffle"},
+    {name: "4-Leaf Clover"}, 
+    {name: "6-Armed Snowflake"}, 
+    {name: "Earth"}, 
+    {name: "Earth Huge"}, 
+    {name: "Mediterranean Large"}, 
+    {name: "Archipelago"}, 
+    {name: "Seven Seas"},
+    {name: "Small Continents"}, 
+    {name: "East Asia"}, 
+    {name: "Europe"}, 
+    {name: "Continents and Islands"}, 
+    {name: "Lakes"}, 
+    {name: "Mirror"}, 
+    {name: "Primordial"}, 
+    {name: "Splintered Fractal"}, 
+    {name: "Terra"}, 
+    {name: "Tilted Axis"}, 
+    {name: "Highlands"}, 
+    {name: "Wetlands"}
+]
+
+
 // returns value of selected expansion (game type) radio button
 function selectedExpansion() {
 	// find checked expansion for game
@@ -207,13 +235,16 @@ function draft() {
 			
 			// pick random from leaders pool
 			let draftedLeader = leadersPool[getRandomInt(0, leadersPool.length-1)];
+			let draftedMap = maps[getRandomInt(0, maps.length-1);
 			if (typeof draftedLeader == "undefined") {
 				document.getElementById("leadersPlayer"+player).innerHTML += "Not enough available leaders<br>";
 			}
 			else {
 				offeredLeaders.push(draftedLeader);
+				offeredMap.push(draftedMap);
 				// show leader to player
 				document.getElementById("leadersPlayer"+player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/"+draftedLeader.img+"' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
+				document.getElementById("leadersPlayer"+player).innerHTML += "[" + draftedMap.name + "]<br>";
 			}
 		}
 	}
