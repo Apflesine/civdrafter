@@ -242,7 +242,7 @@ function draft() {
 			else {
 				offeredLeaders.push(draftedLeader);
 				// show leader to player
-				document.getElementById("leadersPlayer"+player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/"+draftedLeader.img+"' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>[" + draftedMap.name + "]<br>";
+				document.getElementById("leadersPlayer"+player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/"+draftedLeader.img+"' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "] map: " + draftedMap.name + "<br>";
 			}
 		}
 	}
