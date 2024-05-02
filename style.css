@@ -73,6 +73,7 @@ body {
 	transition: color var(--transitionDuration), background-color var(--transitionDuration);
 }
 
+.dark-toggle
 .slider {
 	float: right;
 }
