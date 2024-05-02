@@ -146,15 +146,15 @@ function updateBannedLeaders() {
 			// checkbox
 			let checkboxNode = document.createElement("input");
 			checkboxNode.type = "checkbox";
-			checkboxNode.id = "banCheckboxl"+i;
-			checkboxNode.className = "banCheckboxl";
+			checkboxNode.id = "banCheckbox"+i;
+			checkboxNode.className = "banCheckbox";
 			checkboxNode.value = leaderString;
 			bannedLeadersEl.appendChild(checkboxNode);
 			// img
 			bannedLeadersEl.innerHTML+="<img src='https://static.wikia.nocookie.net/civilization/images/"+leaders[i].img+"' class='leaderIcon'>";
 			// label
 			let labelNode = document.createElement("label");
-			labelNode.htmlFor = "banCheckboxl"+i;
+			labelNode.htmlFor = "banCheckbox"+i;
 			labelNode.innerText = leaderString;
 			bannedLeadersEl.appendChild(labelNode); 
 			// br
@@ -162,7 +162,7 @@ function updateBannedLeaders() {
 			bannedLeadersEl.appendChild(breakNode);
 			// check if it should be banned by default
 			if (leaders[i].banned) {
-				document.getElementById("banCheckboxl"+i).checked = true;
+				document.getElementById("banCheckbox"+i).checked = true;
 			}
 		}
 	}
