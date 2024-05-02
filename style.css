@@ -4,25 +4,43 @@
 
 h1, h2, h3 {
 	font-family: Penumbra;
+	align: center;
 }
 
 body {
 	font-family: Open Sans;
-	margin-left: 20px;
 }
 
-.column {
-	float: left;
-	width: 50%;
-	height: 100%
+.three-column {
+  display: block;
 }
 
-#column2 {
-	padding-top: 50px;
-	padding-bottom: 20px;
+@media (min-width: 1500px) {
+  .three-column {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.three-column > * {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+#columns{
+  border-radius: 25px;
+  border: 2px solid #444;
+  padding: 20px;
 }
 
 .leaderIcon {
+	vertical-align: middle;
+	padding-right: 6px;
+	padding-left: 4px;
+	height: 25px;
+}
+
+.mapIcon {
 	vertical-align: middle;
 	padding-right: 6px;
 	padding-left: 4px;
@@ -53,4 +71,8 @@ body {
 	background-color: var(--backgroundColor);
 	color: var(--textColor);
 	transition: color var(--transitionDuration), background-color var(--transitionDuration);
+}
+
+.slider {
+	float: right;
 }
