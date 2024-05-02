@@ -11,6 +11,23 @@ body {
 	font-family: Open Sans;
 }
 
+.expansion {
+	display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#expansionLabel,output {
+  border-radius: 15px;
+  border: 2px solid #444;
+  margin: 5px;
+  padding: 5px 10px 5px 10px;
+}
+
+input[type="radio"]:checked+label {
+  background-color: #444;
+}
+
 .three-column {
   display: block;
 }
@@ -73,7 +90,11 @@ body {
 	transition: color var(--transitionDuration), background-color var(--transitionDuration);
 }
 
-.dark-toggle,
+#header {
+	text-align: center;
+}
+
 .slider {
 	float: right;
 }
+

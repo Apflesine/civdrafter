@@ -12,18 +12,42 @@
 </head>
 
 <body>
+<div id="header">
+  <h1>Civ VI Drafter</h1>
+
+  <label for="switch">Night Mode: </label>
+  <button class="dark-toggle" type="button" onclick="themeToggle()">Toggle</button>
+</div>
   <div class="three-column">
     <div id="columns">
-      <h1>Civ VI Drafter</h1>
-        <label for="switch">Night Mode: </label>
-        <button class="dark-toggle" type="button" onclick="themeToggle()">Toggle</button>
-
-        <br>
-        <br>
 
 
-        <label for="numberOfPlayers">Number of players:</label>
-        <input class="slider" type="range" id="numberOfPlayers" min="1" value="1" max="12" step="1" list="numberOfPlayers" oninput="this.nextElementSibling.value = this.value"><output>1</output>
+      <h2>Game Type</h2>
+      <div class="expansion">
+
+        <div id="game-type">
+          <input type="radio" id="baseGameRadio" name="paywall" value="Base Game" onclick="updateBannedMaps();updateBannedLeaders()" hidden>
+          <label for="baseGameRadio" id="expansionLabel">Base&nbsp;Game</label>
+        </div>
+
+        <div id="game-type">
+          <input type="radio" id="riseAndFallRadio" name="paywall" value="Rise and Fall" onclick="updateBannedMaps();updateBannedLeaders()" hidden>
+          <label for="riseAndFallRadio" id="expansionLabel">Rise&nbsp;and&nbsp;Fall</label>
+        </div>
+
+        <div id="game-type">
+          <input type="radio" id="gatheringStormRadio" name="paywall" value="Gathering Storm" onclick="updateBannedMaps();updateBannedLeaders()" hidden>
+          <label for="gatheringStormRadio" id="expansionLabel">Gathering&nbsp;Storm</label>
+        </div>
+
+      </div>
+
+      <br>
+
+      <h2>Players</h2>
+
+      <label for="numberOfPlayers">Number of players:</label>
+      <input class="slider" type="range" id="numberOfPlayers" min="1" value="1" max="12" step="1" list="numberOfPlayers" oninput="this.nextElementSibling.value = this.value"><output>1</output>
         <datalist name="numberOfPlayers" id="numberOfPlayers">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -42,7 +66,7 @@
         <br>
         <br>
 
-        <label for="numberOfLeaders">Number of leaders per player:</label>
+        <label for="numberOfLeaders">Leaders per player:</label>
         <input class="slider" type="range" id="numberOfLeaders" min="1" value="1" max="5" step="1" list="numberOfLeaders" oninput="this.nextElementSibling.value = this.value"><output>1</output>
         <datalist name="numberOfLeaders" id="numberOfLeaders">
           <option value="1">1</option>
@@ -54,26 +78,6 @@
 
         <br>
         <br>
-
-      <h2>Game Type</h2>
-
-          <input type="radio" id="baseGameRadio" name="paywall" value="none" onclick="updateBannedMaps();updateBannedLeaders()
-updateBannedMaps()">
-            <label for="baseGameRadio">Base Game</label>
-
-            <br>
-
-          <input type="radio" id="riseAndFallRadio" name="paywall" value="Rise and Fall" onclick="updateBannedMaps();updateBannedLeaders()">
-            <label for="riseAndFallRadio">Rise and Fall</label>
-
-            <br>
-
-          <input type="radio" id="gatheringStormRadio" name="paywall" value="Gathering Storm" onclick="updateBannedMaps();updateBannedLeaders()">
-            <label for="gatheringStormRadio">Gathering Storm</label>
-
-            <br>
-            <br>
-
 <!--<h2>Settings</h2>
 
 <input type="checkbox" id="duplicateCivs" name="duplicateCivs" value="duplicateCivs">
@@ -82,7 +86,7 @@ updateBannedMaps()">
 <input type="checkbox" id="duplicateLeaders" name="duplicateLeaders" value="duplicateLeaders">
 <label for="duplicateLeaders"> Allow duplicate leaders</label><br><br>--><br>
 
-          <button type="button" onclick="playersSelected()">Confirm Bans</button><br><br>
+      <button type="button" id="confirmButton" onclick="playersSelected()" hidden>Confirm Bans</button><br><br>
 
       <div id="map">
       </div>

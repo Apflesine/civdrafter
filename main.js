@@ -156,7 +156,7 @@ function updateBannedLeaders() {
 			let labelNode = document.createElement("label");
 			labelNode.htmlFor = "banCheckbox"+i;
 			labelNode.innerText = leaderString;
-			bannedLeadersEl.appendChild(labelNode); 
+			bannedLeadersEl.appendChild(labelNode);
 			// br
 			let breakNode = document.createElement("br");
 			bannedLeadersEl.appendChild(breakNode);
@@ -166,6 +166,8 @@ function updateBannedLeaders() {
 			}
 		}
 	}
+	// show confirm button
+	document.getElementById("confirmButton").hidden = false;
 }
 
 // generate banned maps checkboxes depending on which gamemode is selected
