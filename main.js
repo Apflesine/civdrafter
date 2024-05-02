@@ -79,36 +79,36 @@ let leaders = [
 ];
 
 let maps = [
-    {name: "Continents", img:"6/6c/Map_Continents_(Civ6).png"},
-    {name: "Fractal", img:"1/15/Map_Fractal_%28Civ6%29.png"}, 
-    {name: "Inland Sea", img:"c/c4/Map_Inland_Sea_%28Civ6%29.png"}, 
-    {name: "Island Plates", img:"d/d0/Map_Island_Plates_%28Civ6%29.png"}, 
-    {name: "Pangaea", img:"3/33/Map_Pangaea_%28Civ6%29.png"}, 
-    {name: "Shuffle", img:"3/30/Map_Shuffle_%28Civ6%29.png"},
-    {name: "4-Leaf Clover", img:"e/e9/Map_4_Leaf_Clover_%28Civ6%29.png"}, 
-    {name: "6-Armed Snowflake", img:"4/4a/Map_6_Armed_Snowflake_%28Civ6%29.png"}, 
-    {name: "Earth", img:"f/fe/Map_Earth_%28Civ6%29.png"}, 
-    {name: "True Start Location Earth", img:"4/4b/Map_True_Start_Earth_%28Civ6%29.png"}, 
-    {name: "Earth Huge", img:"4/45/Map_Earth_Huge_%28Civ6%29.png"},
-    {name: "True Start Location Earth Huge", img:"f/f9/Map_True_Start_Earth_Huge_%28Civ6%29.png"}, 
-    {name: "Mediterranean Large", img:"0/0d/Map_Mediterranean_%28Civ6%29.png"}, 
-    {name: "True Start Location Mediterranean", img:"c/c9/Map_True_Start_Mediterranean_%28Civ6%29.png"}, 
-    {name: "Archipelago", img:"3/35/Map_Archipelago_%28Civ6%29.png"}, 
-    {name: "Seven Seas", img:"2/2e/Map_Seven_Seas_%28Civ6%29.png"},
-    {name: "Small Continents", img:"f/f2/Map_Small_Continents_%28Civ6%29.png"}, 
-    {name: "East Asia", img:"a/a2/Map_East_Asia_%28Civ6%29.png"}, 
-    {name: "True Start Location East Asia", img:"7/77/Map_True_Start_East_Asia_%28Civ6%29.png"}, 
-    {name: "Europe", img:"4/42/Map_Europe_%28Civ6%29.png"}, 
-    {name: "True Start Location Europe", img:"f/f8/Map_True_Start_Europe_%28Civ6%29.png"}, 
-    {name: "Continents and Islands", img:"6/6c/Map_Continents_%28Civ6%29.png"}, 
-    {name: "Lakes", img:"c/c0/Map_Lakes_%28Civ6%29.png"}, 
-    {name: "Mirror", img:"9/99/Map_Mirror_%28Civ6%29.png"}, 
-    {name: "Primordial", img:"8/82/Map_Primodial_%28Civ6%29.png"}, 
-    {name: "Splintered Fractal", img:"5/51/Map_Splintered_Fractal_%28Civ6%29.png"}, 
-    {name: "Terra", img:"3/38/Map_Terra_%28Civ6%29.png"}, 
-    {name: "Tilted Axis", img:"c/cd/Map_Tilted_Axis_%28Civ6%29.png"}, 
-    {name: "Highlands", img:"1/14/Map_Highlands_%28Civ6%29.png"}, 
-    {name: "Wetlands", img:"8/8f/Map_Wetlands_%28Civ6%29.png"},
+    {name: "Continents", expansion: "none", img:"6/6c/Map_Continents_(Civ6).png"},
+    {name: "Fractal", expansion: "none", img:"1/15/Map_Fractal_%28Civ6%29.png"},
+    {name: "Inland Sea", expansion: "none", img:"c/c4/Map_Inland_Sea_%28Civ6%29.png"},
+    {name: "Island Plates", expansion: "none", img:"d/d0/Map_Island_Plates_%28Civ6%29.png"},
+    {name: "Pangaea", expansion: "none", img:"3/33/Map_Pangaea_%28Civ6%29.png"},
+    {name: "Shuffle", expansion: "none", img:"3/30/Map_Shuffle_%28Civ6%29.png"},
+    {name: "4-Leaf Clover", expansion: "none", img:"e/e9/Map_4_Leaf_Clover_%28Civ6%29.png"},
+    {name: "6-Armed Snowflake", expansion: "none", img:"4/4a/Map_6_Armed_Snowflake_%28Civ6%29.png"},
+    {name: "Earth", expansion: "none", img:"f/fe/Map_Earth_%28Civ6%29.png"},
+    {name: "True Start Location Earth", expansion: "none", img:"4/4b/Map_True_Start_Earth_%28Civ6%29.png"},
+    {name: "Earth Huge", expansion: "none", img:"4/45/Map_Earth_Huge_%28Civ6%29.png"},
+    {name: "True Start Location Earth Huge", expansion: "none", img:"f/f9/Map_True_Start_Earth_Huge_%28Civ6%29.png"},
+    {name: "Mediterranean Large", expansion: "none", img:"0/0d/Map_Mediterranean_%28Civ6%29.png"},
+    {name: "True Start Location Mediterranean", expansion: "none", img:"c/c9/Map_True_Start_Mediterranean_%28Civ6%29.png"},
+    {name: "Archipelago", expansion: "none", img:"3/35/Map_Archipelago_%28Civ6%29.png"},
+    {name: "Seven Seas", expansion: "none", img:"2/2e/Map_Seven_Seas_%28Civ6%29.png"},
+    {name: "Small Continents", expansion: "none", img:"f/f2/Map_Small_Continents_%28Civ6%29.png"},
+    {name: "East Asia", expansion: "none", img:"a/a2/Map_East_Asia_%28Civ6%29.png"},
+    {name: "True Start Location East Asia", expansion: "none", img:"7/77/Map_True_Start_East_Asia_%28Civ6%29.png"},
+    {name: "Europe", expansion: "Rise and Fall", img:"4/42/Map_Europe_%28Civ6%29.png"},
+    {name: "True Start Location Europe", expansion: "Rise and Fall", img:"f/f8/Map_True_Start_Europe_%28Civ6%29.png"},
+    {name: "Continents and Islands", expansion: "Gathering Storm", img:"6/6c/Map_Continents_%28Civ6%29.png"},
+    {name: "Lakes", expansion: "none", img:"c/c0/Map_Lakes_%28Civ6%29.png"},
+    {name: "Mirror", expansion: "none", img:"9/99/Map_Mirror_%28Civ6%29.png"},
+    {name: "Primordial", expansion: "Gathering Storm", img:"8/82/Map_Primodial_%28Civ6%29.png"},
+    {name: "Splintered Fractal", expansion: "Gathering Storm", img:"5/51/Map_Splintered_Fractal_%28Civ6%29.png"},
+    {name: "Terra", expansion: "none", img:"3/38/Map_Terra_%28Civ6%29.png"},
+    {name: "Tilted Axis", expansion: "Gathering Storm", img:"c/cd/Map_Tilted_Axis_%28Civ6%29.png"},
+    {name: "Highlands", expansion: "Rise and Fall", img:"1/14/Map_Highlands_%28Civ6%29.png"},
+    {name: "Wetlands", expansion: "none", img:"8/8f/Map_Wetlands_%28Civ6%29.png"},
 ];
 
 
@@ -146,15 +146,15 @@ function updateBannedLeaders() {
 			// checkbox
 			let checkboxNode = document.createElement("input");
 			checkboxNode.type = "checkbox";
-			checkboxNode.id = "banCheckbox"+i;
-			checkboxNode.className = "banCheckbox";
+			checkboxNode.id = "banCheckboxl"+i;
+			checkboxNode.className = "banCheckboxl";
 			checkboxNode.value = leaderString;
 			bannedLeadersEl.appendChild(checkboxNode);
 			// img
 			bannedLeadersEl.innerHTML+="<img src='https://static.wikia.nocookie.net/civilization/images/"+leaders[i].img+"' class='leaderIcon'>";
 			// label
 			let labelNode = document.createElement("label");
-			labelNode.htmlFor = "banCheckbox"+i;
+			labelNode.htmlFor = "banCheckboxl"+i;
 			labelNode.innerText = leaderString;
 			bannedLeadersEl.appendChild(labelNode); 
 			// br
@@ -162,13 +162,58 @@ function updateBannedLeaders() {
 			bannedLeadersEl.appendChild(breakNode);
 			// check if it should be banned by default
 			if (leaders[i].banned) {
-				document.getElementById("banCheckbox"+i).checked = true;
+				document.getElementById("banCheckboxl"+i).checked = true;
 			}
 		}
 	}
 }
+
+// generate banned maps checkboxes depending on which gamemode is selected
+function updateBannedMaps() {
+	let bannedMapsEl = document.getElementById("bannedMapsList");
+	// reset contents
+	bannedMapsEl.innerHTML = "";
+	// find allowed maps from expansion
+	let expansion = selectedExpansion();
+	// repopulate
+	for (let i = 0; i < maps.length; i++) {
+		if (maps[i].expansion == "Rise and Fall" && expansion == "none") {
+			// map not allowed in mode so has no checkbox
+		}
+		else if (maps[i].expansion == "Gathering Storm" && (expansion == "none" || expansion == "Rise and Fall")) {
+			// map not allowed in mode so has no checkbox
+		}
+		else {
+			// map allowed
+			let mapString = maps[i].name+" ["+maps[i].civilization+"]"; // string used to identify map
+			// checkbox
+			let checkboxNode = document.createElement("input");
+			checkboxNode.type = "checkbox";
+			checkboxNode.id = "banCheckboxm"+i;
+			checkboxNode.className = "banCheckboxm";
+			checkboxNode.value = mapString;
+			bannedMapsEl.appendChild(checkboxNode);
+			// img
+			bannedMapsEl.innerHTML+="<img src='https://static.wikia.nocookie.net/civilization/images/"+maps[i].img+"' class='mapIcon'>";
+			// label
+			let labelNode = document.createElement("label");
+			labelNode.htmlFor = "banCheckboxm"+i;
+			labelNode.innerText = mapString;
+			bannedMapsEl.appendChild(labelNode);
+			// br
+			let breakNode = document.createElement("br");
+			bannedMapsEl.appendChild(breakNode);
+			// check if it should be banned by default
+			if (maps[i].banned) {
+				document.getElementById("banCheckboxm"+i).checked = true;
+			}
+		}
+	}
+}
+
 // call on page init
-updateBannedLeaders();
+//updateBannedLeaders();
+//updateBannedMaps();
 
 // number of players and number of leaders has been chosen
 function playersSelected() {
