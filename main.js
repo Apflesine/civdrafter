@@ -227,10 +227,36 @@ function playersSelected() {
 		playerListEl.innerHTML += "<div id='leadersPlayer"+i+"'></div></li><br><br>";
 	}
 	
-    let draftedMap = maps[getRandomInt(0, maps.length - 1)];
+
+
+	// find checked expansion for game
+	let expansion = selectedExpansion();
+
+	// get banned leader checkboxes, as an array (not an HTMLCollection)
+	let bannedMapEls = [...document.getElementsByClassName("banCheckboxm")];
+
+
+	let mapsPool = maps.filter(map => {
+		// check map expansion
+		if (map.expansion == "Rise and Fall" && expansion == "none") {
+			return false;
+		}
+		if (map.expansion == "Gathering Storm" && (expansion == "none" || expansion == "Rise and Fall")) {
+			return false;
+		}
+
+		// check if map is banned
+		if (bannedMapEls.findIndex(mapCheckbox => mapCheckbox.value == map.name && mapCheckbox.checked) != -1) {
+			return false;
+		}
+
+		return true;
+	});
+
+    let draftedMap = mapsPool[getRandomInt(0, mapsPool.length - 1)];
     let mapDisplay = document.getElementById("map");
-    mapDisplay.innerHTML = "Map: " + draftedMap.name + "<br>";
-	
+    mapDisplay.innerHTML = "Map: <img src='https://static.wikia.nocookie.net/civilization/images/"+draftedMap.img+"' class='leaderIcon'>" + draftedMap.name + "<br>";
+
 	// show draft button
 	document.getElementById("draftButton").hidden = false;
 }
