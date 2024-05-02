@@ -185,7 +185,7 @@ function updateBannedMaps() {
 		}
 		else {
 			// map allowed
-			let mapString = maps[i].name+" ["+maps[i].civilization+"]"; // string used to identify map
+			let mapString = maps[i].name+"; // string used to identify map
 			// checkbox
 			let checkboxNode = document.createElement("input");
 			checkboxNode.type = "checkbox";
