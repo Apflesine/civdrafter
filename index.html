@@ -4,7 +4,7 @@
 <title>Civ VI Drafter</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href="style.css?version=6">
+<link rel="stylesheet" href="style.css?version=5">
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
@@ -24,28 +24,18 @@
 
       <h2>Game Type</h2>
       <div class="expansion">
-
         <div id="game-type">
-          <input type="radio" id="baseGameRadio" name="paywall" value="Base Game" onclick="updateBannedMaps();updateBannedLeaders()" hidden>
-          <label for="baseGameRadio" id="expansionLabel">Base&nbsp;Game</label>
+          <button id="noneButton" onclick="selectExpansion('none')">Base&nbsp;Game</button>
         </div>
-
         <div id="game-type">
-          <input type="radio" id="riseAndFallRadio" name="paywall" value="Rise and Fall" onclick="updateBannedMaps();updateBannedLeaders()" hidden>
-          <label for="riseAndFallRadio" id="expansionLabel">Rise&nbsp;and&nbsp;Fall</label>
+          <button id="RiseandFallButton" onclick="selectExpansion('Rise and Fall')">Rise&nbsp;and&nbsp;Fall</button>
         </div>
-
         <div id="game-type">
-          <input type="radio" id="gatheringStormRadio" name="paywall" value="Gathering Storm" onclick="updateBannedMaps();updateBannedLeaders()" hidden>
-          <label for="gatheringStormRadio" id="expansionLabel">Gathering&nbsp;Storm</label>
+          <button id="GatheringStormButton" onclick="selectExpansion('Gathering Storm')">Gathering&nbsp;Storm</button>
         </div>
-
       </div>
 
-      <br>
-
       <h2>Players</h2>
-
       <label for="numberOfPlayers">Number of players:</label>
       <input class="slider" type="range" id="numberOfPlayers" min="1" value="1" max="12" step="1" list="numberOfPlayers" oninput="this.nextElementSibling.value = this.value"><output>1</output>
         <datalist name="numberOfPlayers" id="numberOfPlayers">
@@ -76,8 +66,6 @@
           <option value="5">5</option>
         </datalist>
 
-        <br>
-        <br>
 <!--<h2>Settings</h2>
 
 <input type="checkbox" id="duplicateCivs" name="duplicateCivs" value="duplicateCivs">
@@ -86,13 +74,13 @@
 <input type="checkbox" id="duplicateLeaders" name="duplicateLeaders" value="duplicateLeaders">
 <label for="duplicateLeaders"> Allow duplicate leaders</label><br><br>--><br>
 
-      <button type="button" id="confirmButton" onclick="playersSelected()" hidden>Confirm Bans</button><br><br>
+      <p><button type="button" id="confirmButton" onclick="playersSelected()" hidden>Confirm Players and Bans</button></p>
 
-      <div id="map">
-      </div>
+      <label id="map">
+      </label>
 
       <ul id="playerList"></ul>
-      <button type="button" id="draftButton" onclick="draft()" hidden>Draft!</button><br><br>
+      <button type="button" id="draftButton" onclick="draft()" hidden>Draft!</button>
     </div>
 
     <div id="columns">
@@ -108,7 +96,7 @@
     </div>
   </div>
 
-    <script src="./main.js?version=11"></script>
+    <script src="./main.js?version=10"></script>
 
 </body>
 </html>

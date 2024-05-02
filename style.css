@@ -11,21 +11,52 @@ body {
 	font-family: Open Sans;
 }
 
+label {
+	border-radius: 10px;
+	padding: 0px 10px 5px 2px;
+	color: var(--textColor);
+}
+
+label:hover {
+	background-color: #333;
+	color: #FFF;
+}
+
 .expansion {
 	display: grid;
     grid-auto-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-#expansionLabel,output {
-  border-radius: 15px;
-  border: 2px solid #444;
-  margin: 5px;
-  padding: 5px 10px 5px 10px;
+#noneButton,#RiseandFallButton,#GatheringStormButton,#draftButton,#confirmButton,.dark-toggle,output,select {
+	font-family: Penumbra;
+	border-radius: 15px;
+	border: 2px solid #444;
+	margin: 5px;
+	padding: 6px 6px 4px 6px;
 }
 
-input[type="radio"]:checked+label {
+
+#noneButton,#RiseandFallButton,#GatheringStormButton,#draftButton,#confirmButton,.dark-toggle,select {
+	background-color: var(--backgroundColor);
+	color: var(--textColor);
+	transition: color var(--transitionDuration), background-color var(--transitionDuration);
+}
+
+.selected {
+  background-color: #444 !important;
+  color: #FFF !important;
+}
+
+
+#noneButton:hover,#RiseandFallButton:hover,#GatheringStormButton:hover,#draftButton:hover,#confirmButton:hover,.dark-toggle:hover,select:hover {
+  background-color: #333;
+  color: #FFF
+}
+
+#noneButton:active,#RiseandFallButton:active,#GatheringStormButton:active,#draftButton:active,#confirmButton:active,.dark-toggle:active,select:active {
   background-color: #444;
+  color: #FFF
 }
 
 .three-column {
@@ -50,18 +81,35 @@ input[type="radio"]:checked+label {
   padding: 20px;
 }
 
+li {
+	list-style: none;
+}
+
+.offerList {
+  padding-left: 50px;
+}
+
+#map {
+	display: block;
+	padding: 4px;
+	border-radius: 15px;
+	border: 2px solid #444;
+	text-align: center;
+}
+
 .leaderIcon {
 	vertical-align: middle;
-	padding-right: 6px;
-	padding-left: 4px;
-	height: 25px;
+	margin-right: 6px;
+	margin-left: 4px;
+	height: 24px;
 }
 
 .mapIcon {
 	vertical-align: middle;
-	padding-right: 6px;
-	padding-left: 4px;
-	height: 25px;
+	margin-right: 6px;
+	margin-left: 4px;
+	height: 24px;
+	border-radius: 12px;
 }
 
 :root {
@@ -97,4 +145,3 @@ body {
 .slider {
 	float: right;
 }
-

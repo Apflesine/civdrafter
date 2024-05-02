@@ -31,8 +31,8 @@ let leaders = [
 	{name: "John Curtin", civilization: "Australian", paywall: "Base Game DLC", expansion: "none", banned: false, img:"b/b9/John_Curtin_%28Civ6%29.png"},
 	{name: "Julius Caesar", civilization: "Roman", paywall: "none", expansion: "none", banned: false, img:"4/4c/Julius_Caesar_%28Civ6%29.png"},
 	{name: "Kristina", civilization: "Swedish", paywall: "Gathering Storm", expansion: "Gathering Storm", banned: false, img:"3/32/Kristina_%28Civ6%29.png"},
-	{name: "Kublai Khan", civilization: "Chinese", paywall: "Frotier Pass", expansion: "none", banned: false, img:"5/54/Kublai_Khan_%28Chinese%29_%28Civ6%29.png"},
-	{name: "Kublai Khan", civilization: "Mongolian", paywall: "Frotier Pass", expansion: "none", banned: false, img:"c/cb/Kublai_Khan_%28Mongolian%29_%28Civ6%29.png"},
+	{name: "Kublai Khan", civilization: "Chinese", paywall: "Frontier Pass", expansion: "none", banned: false, img:"5/54/Kublai_Khan_%28Chinese%29_%28Civ6%29.png"},
+	{name: "Kublai Khan", civilization: "Mongolian", paywall: "Frontier Pass", expansion: "none", banned: false, img:"c/cb/Kublai_Khan_%28Mongolian%29_%28Civ6%29.png"},
 	{name: "Kupe", civilization: "Māori", paywall: "Gathering Storm", expansion: "Gathering Storm", banned: false, img:"4/42/Kupe_%28Civ6%29.png"},
 	{name: "Lady Six Sky", civilization: "Mayan", paywall: "Frontier Pass", expansion: "none", banned: false, img:"7/77/Lady_Six_Sky_%28Civ6%29.png"},
 	{name: "Lautaro", civilization: "Mapuche", paywall: "Rise and Fall", expansion: "Rise and Fall", banned: false, img:"e/e0/Lautaro_%28Civ6%29.png"},
@@ -79,59 +79,59 @@ let leaders = [
 ];
 
 let maps = [
-    {name: "Continents", expansion: "none", img:"6/6c/Map_Continents_(Civ6).png"},
-    {name: "Fractal", expansion: "none", img:"1/15/Map_Fractal_%28Civ6%29.png"},
-    {name: "Inland Sea", expansion: "none", img:"c/c4/Map_Inland_Sea_%28Civ6%29.png"},
-    {name: "Island Plates", expansion: "none", img:"d/d0/Map_Island_Plates_%28Civ6%29.png"},
-    {name: "Pangaea", expansion: "none", img:"3/33/Map_Pangaea_%28Civ6%29.png"},
-    {name: "Shuffle", expansion: "none", img:"3/30/Map_Shuffle_%28Civ6%29.png"},
     {name: "4-Leaf Clover", expansion: "none", img:"e/e9/Map_4_Leaf_Clover_%28Civ6%29.png"},
     {name: "6-Armed Snowflake", expansion: "none", img:"4/4a/Map_6_Armed_Snowflake_%28Civ6%29.png"},
-    {name: "Earth", expansion: "none", img:"f/fe/Map_Earth_%28Civ6%29.png"},
-    {name: "True Start Location Earth", expansion: "none", img:"4/4b/Map_True_Start_Earth_%28Civ6%29.png"},
-    {name: "Earth Huge", expansion: "none", img:"4/45/Map_Earth_Huge_%28Civ6%29.png"},
-    {name: "True Start Location Earth Huge", expansion: "none", img:"f/f9/Map_True_Start_Earth_Huge_%28Civ6%29.png"},
-    {name: "Mediterranean Large", expansion: "none", img:"0/0d/Map_Mediterranean_%28Civ6%29.png"},
-    {name: "True Start Location Mediterranean", expansion: "none", img:"c/c9/Map_True_Start_Mediterranean_%28Civ6%29.png"},
-    {name: "Archipelago", expansion: "none", img:"3/35/Map_Archipelago_%28Civ6%29.png"},
-    {name: "Seven Seas", expansion: "none", img:"2/2e/Map_Seven_Seas_%28Civ6%29.png"},
-    {name: "Small Continents", expansion: "none", img:"f/f2/Map_Small_Continents_%28Civ6%29.png"},
-    {name: "East Asia", expansion: "none", img:"a/a2/Map_East_Asia_%28Civ6%29.png"},
-    {name: "True Start Location East Asia", expansion: "none", img:"7/77/Map_True_Start_East_Asia_%28Civ6%29.png"},
-    {name: "Europe", expansion: "Rise and Fall", img:"4/42/Map_Europe_%28Civ6%29.png"},
-    {name: "True Start Location Europe", expansion: "Rise and Fall", img:"f/f8/Map_True_Start_Europe_%28Civ6%29.png"},
+    {name: "Archipelago", expansion: "Rise and Fall", img:"3/35/Map_Archipelago_%28Civ6%29.png"},
+    {name: "Continents", expansion: "none", img:"6/6c/Map_Continents_(Civ6).png"},
     {name: "Continents and Islands", expansion: "Gathering Storm", img:"6/6c/Map_Continents_%28Civ6%29.png"},
+    {name: "Earth", expansion: "none", img:"f/fe/Map_Earth_%28Civ6%29.png"},
+    {name: "Earth Huge", expansion: "none", img:"4/45/Map_Earth_Huge_%28Civ6%29.png"},
+    {name: "East Asia", expansion: "none", img:"a/a2/Map_East_Asia_%28Civ6%29.png"},
+    {name: "Europe", expansion: "Rise and Fall", img:"4/42/Map_Europe_%28Civ6%29.png"},
+    {name: "Fractal", expansion: "none", img:"1/15/Map_Fractal_%28Civ6%29.png"},
+    {name: "Highlands", expansion: "Rise and Fall", img:"1/14/Map_Highlands_%28Civ6%29.png"},
+    {name: "Inland Sea", expansion: "none", img:"c/c4/Map_Inland_Sea_%28Civ6%29.png"},
+    {name: "Island Plates", expansion: "none", img:"d/d0/Map_Island_Plates_%28Civ6%29.png"},
     {name: "Lakes", expansion: "none", img:"c/c0/Map_Lakes_%28Civ6%29.png"},
+    {name: "Mediterranean Large", expansion: "none", img:"0/0d/Map_Mediterranean_%28Civ6%29.png"},
     {name: "Mirror", expansion: "none", img:"9/99/Map_Mirror_%28Civ6%29.png"},
+    {name: "Pangaea", expansion: "none", img:"3/33/Map_Pangaea_%28Civ6%29.png"},
     {name: "Primordial", expansion: "Gathering Storm", img:"8/82/Map_Primodial_%28Civ6%29.png"},
+    {name: "Seven Seas", expansion: "none", img:"2/2e/Map_Seven_Seas_%28Civ6%29.png"},
+    {name: "Shuffle", expansion: "none", img:"3/30/Map_Shuffle_%28Civ6%29.png"},
+    {name: "Small Continents", expansion: "none", img:"f/f2/Map_Small_Continents_%28Civ6%29.png"},
     {name: "Splintered Fractal", expansion: "Gathering Storm", img:"5/51/Map_Splintered_Fractal_%28Civ6%29.png"},
     {name: "Terra", expansion: "none", img:"3/38/Map_Terra_%28Civ6%29.png"},
     {name: "Tilted Axis", expansion: "Gathering Storm", img:"c/cd/Map_Tilted_Axis_%28Civ6%29.png"},
-    {name: "Highlands", expansion: "Rise and Fall", img:"1/14/Map_Highlands_%28Civ6%29.png"},
-    {name: "Wetlands", expansion: "none", img:"8/8f/Map_Wetlands_%28Civ6%29.png"},
+    {name: "True Start Location Earth", expansion: "none", img:"4/4b/Map_True_Start_Earth_%28Civ6%29.png"},
+    {name: "True Start Location Earth Huge", expansion: "none", img:"f/f9/Map_True_Start_Earth_Huge_%28Civ6%29.png"},
+    {name: "True Start Location East Asia", expansion: "none", img:"7/77/Map_True_Start_East_Asia_%28Civ6%29.png"},
+    {name: "True Start Location Europe", expansion: "Rise and Fall", img:"f/f8/Map_True_Start_Europe_%28Civ6%29.png"},
+    {name: "True Start Location Mediterranean", expansion: "none", img:"c/c9/Map_True_Start_Mediterranean_%28Civ6%29.png"},
+    {name: "Wetlands", expansion: "none", img:"8/8f/Map_Wetlands_%28Civ6%29.png"}
 ];
 
 
-// returns value of selected expansion (game type) radio button
-function selectedExpansion() {
-	// find checked expansion for game
-	let expansion = "none";
-	if (document.getElementById("riseAndFallRadio").checked) {
-		expansion = "Rise and Fall";
-	}
-	else if (document.getElementById("gatheringStormRadio").checked) {
-		expansion = "Gathering Storm";
-	}
-	return expansion;
+function selectExpansion(expansion) {
+    // Set the selected expansion
+    selectedExpansion = expansion;
+    // Update selected expansion
+    let selectedButton = document.querySelector('.selected');
+    if (selectedButton) {
+        selectedButton.classList.remove('selected');
+    }
+    document.getElementById(expansion.replace(/\s/g, '') + 'Button').classList.add('selected');
+
+    // Update banned maps and leaders based on selected expansion
+    updateBannedMaps(expansion);
+    updateBannedLeaders(expansion);
 }
 
 // generate banned leaders checkboxes depending on which gamemode is selected
-function updateBannedLeaders() {
+function updateBannedLeaders(expansion) {
 	let bannedLeadersEl = document.getElementById("bannedLeadersList");
 	// reset contents
 	bannedLeadersEl.innerHTML = "";
-	// find allowed leaders from expansion
-	let expansion = selectedExpansion();
 	// repopulate
 	for (let i = 0; i < leaders.length; i++) {
 		if (leaders[i].expansion == "Rise and Fall" && expansion == "none") {
@@ -151,11 +151,11 @@ function updateBannedLeaders() {
 			checkboxNode.value = leaderString;
 			bannedLeadersEl.appendChild(checkboxNode);
 			// img
-			bannedLeadersEl.innerHTML+="<img src='https://static.wikia.nocookie.net/civilization/images/"+leaders[i].img+"' class='leaderIcon'>";
+			bannedLeadersEl.innerHTML+="";
 			// label
 			let labelNode = document.createElement("label");
 			labelNode.htmlFor = "banCheckbox"+i;
-			labelNode.innerText = leaderString;
+			labelNode.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/"+leaders[i].img+"' class='leaderIcon'>" + leaderString;
 			bannedLeadersEl.appendChild(labelNode);
 			// br
 			let breakNode = document.createElement("br");
@@ -171,12 +171,10 @@ function updateBannedLeaders() {
 }
 
 // generate banned maps checkboxes depending on which gamemode is selected
-function updateBannedMaps() {
+function updateBannedMaps(expansion) {
 	let bannedMapsEl = document.getElementById("bannedMapsList");
 	// reset contents
 	bannedMapsEl.innerHTML = "";
-	// find allowed maps from expansion
-	let expansion = selectedExpansion();
 	// repopulate
 	for (let i = 0; i < maps.length; i++) {
 		if (maps[i].expansion == "Rise and Fall" && expansion == "none") {
@@ -196,12 +194,11 @@ function updateBannedMaps() {
 			checkboxNode.value = mapString;
 			bannedMapsEl.appendChild(checkboxNode);
 			// img
-			bannedMapsEl.innerHTML+="<img src='https://static.wikia.nocookie.net/civilization/images/"+maps[i].img+"' class='mapIcon'>";
+			bannedMapsEl.innerHTML+="";
 			// label
 			let labelNode = document.createElement("label");
 			labelNode.htmlFor = "banCheckboxm"+i;
-			labelNode.innerText = mapString;
-			bannedMapsEl.appendChild(labelNode);
+            labelNode.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + maps[i].img + "' class='mapIcon'>" + mapString;			bannedMapsEl.appendChild(labelNode);
 			// br
 			let breakNode = document.createElement("br");
 			bannedMapsEl.appendChild(breakNode);
@@ -213,31 +210,21 @@ function updateBannedMaps() {
 	}
 }
 
-// call on page init
-//updateBannedLeaders();
-//updateBannedMaps();
-
 // number of players and number of leaders has been chosen
 function playersSelected() {
 	let playerListEl = document.getElementById("playerList");
 	playerListEl.innerHTML = "";
 	for (let i = 1; i <= parseInt(document.getElementById("numberOfPlayers").value); i++) {
-		playerListEl.innerHTML += "<li id='player"+i+"'>Player "+i;
 		// dlc select dropdown
-		playerListEl.innerHTML += "<select id='dlcPlayer"+i+"'><option value='none'>No DLC Leaders</option><option value='Base Game DLC'>Platinum Edition Leaders</option><option value='Frontier Pass'>Platinum Edition + Frontier Pass</option><option value='Leader Pass'>Platinum Edition + Frontier Pass + Leader Pass</option></select><br>"
+		playerListEl.innerHTML += "<li id='player"+i+"'>Player "+i+"<select id='dlcPlayer"+i+"'><option value='none'>No DLC </option><option value='Base Game DLC'>Platinum Edition </option><option value='Frontier Pass'>Platinum Edition + Frontier Pass</option><option value='Leader Pass'>Platinum Edition + Frontier Pass + Leader Pass</option></select>"
 		// player leader holder
-		playerListEl.innerHTML += "<div id='leadersPlayer"+i+"'></div></li><br><br>";
+		playerListEl.innerHTML += "<li class='offerList'><div id='leadersPlayer"+i+"'></div></li>";
 	}
 	
-
-
-	// find checked expansion for game
-	let expansion = selectedExpansion();
-
 	// get banned leader checkboxes, as an array (not an HTMLCollection)
 	let bannedMapEls = [...document.getElementsByClassName("banCheckboxm")];
 
-
+	let expansion = selectedExpansion;
 	let mapsPool = maps.filter(map => {
 		// check map expansion
 		if (map.expansion == "Rise and Fall" && expansion == "none") {
@@ -257,7 +244,7 @@ function playersSelected() {
 
     let draftedMap = mapsPool[getRandomInt(0, mapsPool.length - 1)];
     let mapDisplay = document.getElementById("map");
-    mapDisplay.innerHTML = "Map: <img src='https://static.wikia.nocookie.net/civilization/images/"+draftedMap.img+"' class='leaderIcon'>" + draftedMap.name + "<br>";
+    mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/"+draftedMap.img+"' class='mapIcon'>" + draftedMap.name;
 
 	// show draft button
 	document.getElementById("draftButton").hidden = false;
@@ -265,10 +252,8 @@ function playersSelected() {
 
 // player dlc preferences have also been chosen - draft leaders
 function draft() {
+    let expansion = selectedExpansion;
 	let offeredLeaders = []; // list of leaders that have already been offered
-	
-	// find checked expansion for game
-	let expansion = selectedExpansion();
 	
 	// get banned leader checkboxes, as an array (not an HTMLCollection)
 	let bannedLeaderEls = [...document.getElementsByClassName("banCheckbox")];
