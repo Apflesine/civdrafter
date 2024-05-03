@@ -80,14 +80,6 @@ label {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-	body {
-		font-size: 16px;
-	}
-
-	#noneButton,#RiseandFallButton,#GatheringStormButton,#draftButton,#confirmButton,.dark-toggle,output,select {
-		font-size: 13px;
-	}
-}
 .three-column > * {
   padding: 1rem;
   margin: 1rem;
