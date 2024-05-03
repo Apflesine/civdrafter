@@ -25,13 +25,20 @@ label {
 [type="checkbox"]:checked + label {
 	background-color: #eb3131 !important;
 	transition: color var(--transitionDuration), background-color var(--transitionDuration);
+	color: #FFF;
 }
 
 .slider {
-	width: 45%;
+	width: 100%;
+	float: left;
+	height: 60px;
 }
 
-#expansion {
+#divOfPlayers,#divOfLeaders{
+
+}
+
+#expansion, {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -114,6 +121,10 @@ li {
 	color: #FFF;
 }
 
+#map:empty {
+  display: none;
+}
+
 .leaderIcon {
 	vertical-align: middle;
 	margin-right: 6px;
@@ -157,8 +168,4 @@ body {
 
 #header {
 	text-align: center;
-}
-
-.slider {
-	float: right;
 }
