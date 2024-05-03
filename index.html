@@ -5,7 +5,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css?version=14">
+<link rel="stylesheet" href="style.css?version=15">
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
@@ -24,19 +24,15 @@
 
 
       <h2>Game Type</h2>
-      <div class="expansion">
-        <div id="game-type">
-          <button id="noneButton" onclick="selectExpansion('none')">Base&nbsp;Game</button>
-        </div>
-        <div id="game-type">
-          <button id="RiseandFallButton" onclick="selectExpansion('Rise and Fall')">Rise&nbsp;and&nbsp;Fall</button>
-        </div>
-        <div id="game-type">
-          <button id="GatheringStormButton" onclick="selectExpansion('Gathering Storm')">Gathering&nbsp;Storm</button>
-        </div>
-      </div>
+
+      <div id="expansion">
+          <button id="noneButton" class="expansion" onclick="selectExpansion('none')">Base&nbsp;Game</button>
+          <button id="RiseandFallButton" class="expansion" onclick="selectExpansion('Rise and Fall')">Rise&nbsp;and&nbsp;Fall</button>
+          <button id="GatheringStormButton" class="expansion" onclick="selectExpansion('Gathering Storm')">Gathering&nbsp;Storm</button>
+          </div>
 
       <h2>Players</h2>
+
       <label>Number of players:</label>
       <input class="slider" type="range" id="numberOfPlayers" min="1" value="1" max="12" step="1" list="numberOfPlayers" oninput="this.nextElementSibling.value = this.value"><output>1</output>
         <datalist name="numberOfPlayers" id="numberOfPlayers">

@@ -24,19 +24,25 @@ label {
 
 [type="checkbox"]:checked + label {
 	background-color: #eb3131 !important;
+	transition: color var(--transitionDuration), background-color var(--transitionDuration);
 }
 
 .slider {
 	width: 45%;
 }
 
-.expansion {
-	display: grid;
-    grid-auto-rows: 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
+#expansion {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
-#noneButton,#RiseandFallButton,#GatheringStormButton,#draftButton,#confirmButton,.dark-toggle,output,select {
+.expansion {
+}
+
+button,.dark-toggle,output,select {
 	font-family: Penumbra;
 	border-radius: 15px;
 	border: 2px solid #444;
@@ -45,7 +51,7 @@ label {
 }
 
 
-#noneButton,#RiseandFallButton,#GatheringStormButton,#draftButton,#confirmButton,.dark-toggle,select {
+button,.dark-toggle,select {
 	background-color: var(--backgroundColor);
 	color: var(--textColor);
 	transition: color var(--transitionDuration), background-color var(--transitionDuration);
@@ -57,14 +63,14 @@ label {
 }
 
 
-#noneButton:hover,#RiseandFallButton:hover,#GatheringStormButton:hover,#draftButton:hover,#confirmButton:hover,.dark-toggle:hover,select:hover {
+button:hover,.dark-toggle:hover,select:hover {
   background-color: #333;
-  color: #FFF
+  color: #FFF;
 }
 
-#noneButton:active,#RiseandFallButton:active,#GatheringStormButton:active,#draftButton:active,#confirmButton:active,.dark-toggle:active,select:active {
+button:active,.dark-toggle:active,select:active {
   background-color: #444;
-  color: #FFF
+  color: #FFF;
 }
 
 .three-column {
