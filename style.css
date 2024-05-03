@@ -79,6 +79,7 @@ label {
     grid-auto-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
 
 .three-column > * {
   padding: 1rem;
