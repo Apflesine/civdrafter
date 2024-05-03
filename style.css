@@ -34,11 +34,7 @@ label {
 	height: 60px;
 }
 
-#divOfPlayers,#divOfLeaders{
-
-}
-
-#expansion, {
+#expansion {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;

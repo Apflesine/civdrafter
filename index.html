@@ -5,7 +5,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
-<link rel="stylesheet" href="style.css?version=18">
+<link rel="stylesheet" href="style.css?version=19">
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
@@ -33,8 +33,8 @@
 
       <h2>Players</h2>
 
-      <div id="divOfPlayers">
         <label>Number of players:</label>
+
         <input class="slider" type="range" id="numberOfPlayers" min="1" value="1" max="12" step="1" list="numberOfPlayers" oninput="this.nextElementSibling.value = this.value"><output>1</output>
           <datalist name="numberOfPlayers" id="numberOfPlayers">
             <option value="1">1</option>
@@ -50,11 +50,12 @@
             <option value="11">11</option>
             <option value="12">12</option>
           </datalist>
-        </div>
 
-        <div id="divOfLeaders">
-          <label>Leaders per player:</label>
-          <input class="slider" type="range" id="numberOfLeaders" min="1" value="1" max="5" step="1" list="numberOfLeaders" oninput="this.nextElementSibling.value = this.value"><output>1</output>
+          <br>
+
+        <label>Leaders per player:</label>
+
+        <input class="slider" type="range" id="numberOfLeaders" min="1" value="1" max="5" step="1" list="numberOfLeaders" oninput="this.nextElementSibling.value = this.value"><output>1</output>
           <datalist name="numberOfLeaders" id="numberOfLeaders">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -62,7 +63,6 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </datalist>
-        </div>
 
 <!--<h2>Settings</h2>
 
