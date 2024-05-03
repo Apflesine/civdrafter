@@ -4,8 +4,8 @@
 <title>Civ VI Drafter</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta name="viewport" content="width=800, initial-scale=1" />
-<link rel="stylesheet" href="style.css?version=10">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css?version=11">
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
@@ -37,7 +37,7 @@
       </div>
 
       <h2>Players</h2>
-      <label for="numberOfPlayers">Number of players:</label>
+      <label>Number of players:</label>
       <input class="slider" type="range" id="numberOfPlayers" min="1" value="1" max="12" step="1" list="numberOfPlayers" oninput="this.nextElementSibling.value = this.value"><output>1</output>
         <datalist name="numberOfPlayers" id="numberOfPlayers">
           <option value="1">1</option>
@@ -57,7 +57,7 @@
         <br>
         <br>
 
-        <label for="numberOfLeaders">Leaders per player:</label>
+        <label>Leaders per player:</label>
         <input class="slider" type="range" id="numberOfLeaders" min="1" value="1" max="5" step="1" list="numberOfLeaders" oninput="this.nextElementSibling.value = this.value"><output>1</output>
         <datalist name="numberOfLeaders" id="numberOfLeaders">
           <option value="1">1</option>

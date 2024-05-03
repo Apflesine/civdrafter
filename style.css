@@ -18,13 +18,17 @@ label {
 	color: var(--textColor);
 }
 
-label:hover {
+[type="checkbox"] + label:hover {
 	background-color: #333;
 	color: #FFF;
 }
 
 [type="checkbox"]:checked + label {
 	background-color: #eb3131 !important;
+}
+
+.slider {
+	width: 45%;
 }
 
 .expansion {
