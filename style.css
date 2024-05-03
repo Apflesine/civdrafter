@@ -9,6 +9,7 @@ h1, h2, h3 {
 
 body {
 	font-family: Open Sans;
+	font-size: 28px;
 }
 
 label {
@@ -38,6 +39,7 @@ label:hover {
 	border: 2px solid #444;
 	margin: 5px;
 	padding: 6px 6px 4px 6px;
+	font-size: 24px;
 }
 
 
@@ -73,6 +75,14 @@ label:hover {
     grid-auto-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+	body {
+		font-size: 16px;
+	}
+
+	#noneButton,#RiseandFallButton,#GatheringStormButton,#draftButton,#confirmButton,.dark-toggle,output,select {
+		font-size: 13px;
+	}
 }
 .three-column > * {
   padding: 1rem;
