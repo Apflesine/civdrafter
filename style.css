@@ -17,6 +17,10 @@ label {
 	color: var(--textColor);
 }
 
+select {
+	width: 75%;
+}
+
 [type="checkbox"] + label:hover {
 	background-color: #333;
 	color: #FFF;
@@ -104,7 +108,7 @@ li {
 }
 
 .offerList {
-  padding-left: 50px;
+  padding-left: 2%;
 }
 
 #map {
