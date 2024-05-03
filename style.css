@@ -9,7 +9,6 @@ h1, h2, h3 {
 
 body {
 	font-family: Open Sans;
-	font-size: 28px;
 }
 
 label {
@@ -43,7 +42,6 @@ label {
 	border: 2px solid #444;
 	margin: 5px;
 	padding: 6px 6px 4px 6px;
-	font-size: 24px;
 }
 
 
