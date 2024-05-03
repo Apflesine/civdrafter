@@ -125,6 +125,53 @@ function selectExpansion(expansion) {
     // Update banned maps and leaders based on selected expansion
     updateBannedMaps(expansion);
     updateBannedLeaders(expansion);
+	loadBannedSelection();
+}
+
+// Function to save banned maps and leaders selection to localStorage
+function saveBannedSelection() {
+    let bannedMapsSelection = [];
+    let bannedLeadersSelection = [];
+
+    // Save banned maps selection
+    let bannedMapCheckboxes = document.getElementsByClassName("banCheckboxm");
+    for (let i = 0; i < bannedMapCheckboxes.length; i++) {
+        if (bannedMapCheckboxes[i].checked) {
+            bannedMapsSelection.push(bannedMapCheckboxes[i].value);
+        }
+    }
+    localStorage.setItem('bannedMaps', JSON.stringify(bannedMapsSelection));
+
+    // Save banned leaders selection
+    let bannedLeaderCheckboxes = document.getElementsByClassName("banCheckbox");
+    for (let i = 0; i < bannedLeaderCheckboxes.length; i++) {
+        if (bannedLeaderCheckboxes[i].checked) {
+            bannedLeadersSelection.push(bannedLeaderCheckboxes[i].value);
+        }
+    }
+    localStorage.setItem('bannedLeaders', JSON.stringify(bannedLeadersSelection));
+}
+
+// Function to load banned maps and leaders selection from localStorage
+function loadBannedSelection() {
+    let bannedMapsSelection = JSON.parse(localStorage.getItem('bannedMaps')) || [];
+    let bannedLeadersSelection = JSON.parse(localStorage.getItem('bannedLeaders')) || [];
+
+    // Load banned maps selection
+    let bannedMapCheckboxes = document.getElementsByClassName("banCheckboxm");
+    for (let i = 0; i < bannedMapCheckboxes.length; i++) {
+        if (bannedMapsSelection.includes(bannedMapCheckboxes[i].value)) {
+            bannedMapCheckboxes[i].checked = true;
+        }
+    }
+
+    // Load banned leaders selection
+    let bannedLeaderCheckboxes = document.getElementsByClassName("banCheckbox");
+    for (let i = 0; i < bannedLeaderCheckboxes.length; i++) {
+        if (bannedLeadersSelection.includes(bannedLeaderCheckboxes[i].value)) {
+            bannedLeaderCheckboxes[i].checked = true;
+        }
+    }
 }
 
 // generate banned leaders checkboxes depending on which gamemode is selected
@@ -148,10 +195,9 @@ function updateBannedLeaders(expansion) {
 			checkboxNode.type = "checkbox";
 			checkboxNode.id = "banCheckbox"+i;
 			checkboxNode.className = "banCheckbox";
+			checkboxNode.onclick = saveBannedSelection;
 			checkboxNode.value = leaderString;
 			bannedLeadersEl.appendChild(checkboxNode);
-			// img
-			bannedLeadersEl.innerHTML+="";
 			// label
 			let labelNode = document.createElement("label");
 			labelNode.htmlFor = "banCheckbox"+i;
@@ -191,14 +237,13 @@ function updateBannedMaps(expansion) {
 			checkboxNode.type = "checkbox";
 			checkboxNode.id = "banCheckboxm"+i;
 			checkboxNode.className = "banCheckboxm";
+			checkboxNode.onclick = saveBannedSelection;
 			checkboxNode.value = mapString;
 			bannedMapsEl.appendChild(checkboxNode);
-			// img
-			bannedMapsEl.innerHTML+="";
 			// label
 			let labelNode = document.createElement("label");
 			labelNode.htmlFor = "banCheckboxm"+i;
-            labelNode.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + maps[i].img + "' class='mapIcon'>" + mapString;			bannedMapsEl.appendChild(labelNode);
+            labelNode.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + maps[i].img + "' class='mapIcon' onclick='saveBannedSelection();'>" + mapString;			bannedMapsEl.appendChild(labelNode);
 			// br
 			let breakNode = document.createElement("br");
 			bannedMapsEl.appendChild(breakNode);

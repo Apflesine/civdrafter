@@ -13,13 +13,17 @@ body {
 
 label {
 	border-radius: 10px;
-	padding: 0px 10px 5px 2px;
+	padding: 0px 10px 4px 0px;
 	color: var(--textColor);
 }
 
 label:hover {
 	background-color: #333;
 	color: #FFF;
+}
+
+[type="checkbox"]:checked + label {
+	background-color: #eb3131 !important;
 }
 
 .expansion {
