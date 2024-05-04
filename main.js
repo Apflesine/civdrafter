@@ -261,7 +261,7 @@ function playersSelected() {
 	playerListEl.innerHTML = "";
 	for (let i = 1; i <= parseInt(document.getElementById("numberOfPlayers").value); i++) {
 		// dlc select dropdown
-		playerListEl.innerHTML += "Player "+i+"<select id='dlcPlayer"+i+"'><option value='none'>No DLC </option><option value='Base Game DLC'>Platinum Edition </option><option value='Frontier Pass'>Platinum Edition + Frontier Pass</option><option value='Leader Pass'>Platinum Edition + Frontier Pass + Leader Pass</option></select>"
+		playerListEl.innerHTML += "Player "+i+":<select id='dlcPlayer"+i+"'><option value='none'>No DLC </option><option value='Base Game DLC'>Platinum Edition </option><option value='Frontier Pass'>Platinum Edition + Frontier Pass</option><option value='Leader Pass'>Platinum Edition + Frontier Pass + Leader Pass</option></select>"
 		// player leader holder
 		playerListEl.innerHTML += "<li class='offerList'><div id='leadersPlayer"+i+"'></div></li>";
 	}

@@ -20,6 +20,7 @@ label {
 
 select {
 	width: 75%;
+	margin: 10px;
 }
 
 [type="checkbox"] + label:hover {
@@ -72,7 +73,6 @@ button,.dark-toggle,select {
   color: #FFF !important;
 }
 
-
 button:hover,.dark-toggle:hover,select:hover {
 	background-color: var(--hoverBackgroundColor);
 	color: var(--textColor);
@@ -111,7 +111,7 @@ li {
 }
 
 #playerList {
-	padding: 5px;
+	margin-bottom: 10px;
 }
 
 .offerList {
