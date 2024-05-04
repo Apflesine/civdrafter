@@ -1,8 +1,17 @@
 /* fonts   #1d1e22  */
-@font-face {font-family: Penumbra; src: url('Penumbra-HalfSerif.ttf');} 
-@font-face {font-family: Open Sans; src: url('OpenSans-Regular.ttf');} 
+@font-face {
+	font-family: Penumbra;
+	src: url('Penumbra-HalfSerif.ttf');
+}
 
-h1, h2, h3 {
+@font-face {
+	font-family: Open Sans;
+	src: url('OpenSans-Regular.ttf');
+}
+
+h1,
+h2,
+h3 {
 	font-family: Penumbra;
 	text-align: center;
 }
@@ -23,12 +32,12 @@ select {
 	margin: 10px;
 }
 
-[type="checkbox"] + label:hover {
+[type="checkbox"]+label:hover {
 	background-color: var(--hoverBackgroundColor);
 	color: var(--textColor);
 }
 
-[type="checkbox"]:checked + label {
+[type="checkbox"]:checked+label {
 	background-color: #eb3131 !important;
 	transition: color var(--transitionDuration), background-color var(--transitionDuration);
 	color: #FFF;
@@ -49,12 +58,15 @@ select {
 }
 
 #expansion {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
 }
 
-button,.dark-toggle,output,select {
+button,
+.dark-toggle,
+output,
+select {
 	font-family: Penumbra;
 	border-radius: 15px;
 	border: 2px solid var(--highlightBackgroundColor);
@@ -62,48 +74,55 @@ button,.dark-toggle,output,select {
 }
 
 
-button,.dark-toggle,select {
+button,
+.dark-toggle,
+select {
 	background-color: var(--backgroundColor);
 	color: var(--textColor);
 	transition: color var(--transitionDuration), background-color var(--transitionDuration);
 }
 
 .selected {
-  background-color: #444 !important;
-  color: #FFF !important;
+	background-color: #444 !important;
+	color: #FFF !important;
 }
 
-button:hover,.dark-toggle:hover,select:hover {
+button:hover,
+.dark-toggle:hover,
+select:hover {
 	background-color: var(--hoverBackgroundColor);
 	color: var(--textColor);
 }
 
-button:active,.dark-toggle:active,select:active,.selected {
+button:active,
+.dark-toggle:active,
+select:active,
+.selected {
 	background-color: var(--highlightBackgroundColor) !important;
 	color: var(--textColor) !important;
 }
 
 .three-column {
-  display: block;
+	display: block;
 }
 
 @media (min-width: 1400px) {
-  .three-column {
-    display: grid;
-    grid-auto-rows: 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+	.three-column {
+		display: grid;
+		grid-auto-rows: 1fr;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
 }
 
-.three-column > * {
-  padding: 1rem;
-  margin: 1rem;
+.three-column>* {
+	padding: 1rem;
+	margin: 1rem;
 }
 
-#columns{
-  border-radius: 25px;
-  border: 2px solid var(--highlightBackgroundColor);
-  padding: 20px;
+#columns {
+	border-radius: 25px;
+	border: 2px solid var(--highlightBackgroundColor);
+	padding: 20px;
 }
 
 li {
@@ -123,7 +142,7 @@ li {
 #map {
 	display: block;
 	border-radius: 15px;
-	border: 2px solid  var(--highlightBackgroundColor);
+	border: 2px solid var(--highlightBackgroundColor);
 	text-align: center;
 	padding-bottom: 2px;
 	background-color: var(--highlightBackgroundColor);
@@ -132,7 +151,7 @@ li {
 }
 
 #map:empty {
-  display: none;
+	display: none;
 }
 
 .leaderIcon {
@@ -157,7 +176,7 @@ li {
 	--hoverBackgroundColor: #E0E0E0;
 	--textColor: #000;
 	--linkColor: #00AA00;
-	--boxShadowColor: rgba(0,0,0, .15);
+	--boxShadowColor: rgba(0, 0, 0, .15);
 	--transitionDuration: 400ms;
 	--spacing: 8px;
 }
@@ -169,7 +188,7 @@ li {
 	--hoverBackgroundColor: #333;
 	--textColor: #FFF;
 	--linkColor: #00CC00;
-	--boxShadowColor: rgba(255,255,255, .1);
+	--boxShadowColor: rgba(255, 255, 255, .1);
 }
 
 body {

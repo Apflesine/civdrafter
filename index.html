@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Civ VI Drafter</title>
+  <title>Civ VI Drafter</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
-<link rel="stylesheet" href="style.css?version=22">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="style.css?version=23">
 
-<!-- favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
 </head>
 
 <body>
-<div id="header">
-  <h1>Civ VI Drafter</h1>
+  <div id="header">
+    <h1>Civ VI Drafter</h1>
 
-  <label for="switch">Night Mode: </label>
-  <button class="dark-toggle" type="button" onclick="themeToggle()">Toggle</button>
-</div>
+    <label for="switch">Night Mode: </label>
+    <button class="dark-toggle" type="button" onclick="themeToggle()">Toggle</button>
+  </div>
   <div class="three-column">
     <div id="columns">
 
@@ -26,46 +27,50 @@
       <h2>Game Type</h2>
 
       <div id="expansion">
-          <button id="noneButton" class="expansion" onclick="selectExpansion('none')">Base&nbsp;Game</button>
-          <button id="RiseandFallButton" class="expansion" onclick="selectExpansion('Rise and Fall')">Rise&nbsp;and&nbsp;Fall</button>
-          <button id="GatheringStormButton" class="expansion" onclick="selectExpansion('Gathering Storm')">Gathering&nbsp;Storm</button>
-          </div>
+        <button id="noneButton" class="expansion" onclick="selectExpansion('none')">Base&nbsp;Game</button>
+        <button id="RiseandFallButton" class="expansion"
+          onclick="selectExpansion('Rise and Fall')">Rise&nbsp;and&nbsp;Fall</button>
+        <button id="GatheringStormButton" class="expansion"
+          onclick="selectExpansion('Gathering Storm')">Gathering&nbsp;Storm</button>
+      </div>
 
       <h2>Players</h2>
 
-        <label>Number of players:</label>
+      <label>Number of players:</label>
 
-        <input class="slider" type="range" id="numberOfPlayers" min="1" value="1" max="12" step="1" list="numberOfPlayers" oninput="this.nextElementSibling.value = this.value"><output>1</output>
-          <datalist name="numberOfPlayers" id="numberOfPlayers">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </datalist>
+      <input class="slider" type="range" id="numberOfPlayers" min="1" value="1" max="12" step="1" list="numberOfPlayers"
+        oninput="this.nextElementSibling.value = this.value"><output>1</output>
+      <datalist name="numberOfPlayers" id="numberOfPlayers">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </datalist>
 
-          <br>
+      <br>
 
-        <label>Leaders per player:</label>
+      <label>Leaders per player:</label>
 
-        <input class="slider" type="range" id="numberOfLeaders" min="1" value="1" max="5" step="1" list="numberOfLeaders" oninput="this.nextElementSibling.value = this.value"><output>1</output>
-          <datalist name="numberOfLeaders" id="numberOfLeaders">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </datalist>
+      <input class="slider" type="range" id="numberOfLeaders" min="1" value="1" max="5" step="1" list="numberOfLeaders"
+        oninput="this.nextElementSibling.value = this.value"><output>1</output>
+      <datalist name="numberOfLeaders" id="numberOfLeaders">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </datalist>
 
-          <br>
-<!--<h2>Settings</h2>
+      <br>
+      <!--<h2>Settings</h2>
 
 <input type="checkbox" id="duplicateCivs" name="duplicateCivs" value="duplicateCivs">
 <label for="duplicateCivs"> Allow duplicate civs</label><br>
@@ -73,7 +78,8 @@
 <input type="checkbox" id="duplicateLeaders" name="duplicateLeaders" value="duplicateLeaders">
 <label for="duplicateLeaders"> Allow duplicate leaders</label><br><br>--><br>
 
-      <p><button type="button" id="confirmButton" onclick="playersSelected()" hidden>Confirm Players and Bans</button></p>
+      <p><button type="button" id="confirmButton" onclick="playersSelected()" hidden>Confirm Players and Bans</button>
+      </p>
 
       <p id="map"></p>
 
@@ -82,19 +88,20 @@
     </div>
 
     <div id="columns">
-        <h2>Banned Maps</h2>
-        <div id="bannedMapsList">
-        </div>
+      <h2>Banned Maps</h2>
+      <div id="bannedMapsList">
       </div>
+    </div>
 
     <div id="columns">
-        <h2>Banned Leaders</h2>
-        <div id="bannedLeadersList">
-        </div>
+      <h2>Banned Leaders</h2>
+      <div id="bannedLeadersList">
+      </div>
     </div>
   </div>
 
-    <script src="./main.js?version=16"></script>
+  <script src="./main.js?version=18"></script>
 
 </body>
+
 </html>
