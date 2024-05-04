@@ -4,7 +4,7 @@
 
 h1, h2, h3 {
 	font-family: Penumbra;
-	align: center;
+	text-align: center;
 }
 
 body {
@@ -12,9 +12,10 @@ body {
 }
 
 label {
-	border-radius: 10px;
+	border-radius: 15px;
 	padding: 0px 10px 4px 0px;
 	color: var(--textColor);
+	line-height: 26px;
 }
 
 select {
@@ -22,14 +23,22 @@ select {
 }
 
 [type="checkbox"] + label:hover {
-	background-color: #333;
-	color: #FFF;
+	background-color: var(--hoverBackgroundColor);
+	color: var(--textColor);
 }
 
 [type="checkbox"]:checked + label {
 	background-color: #eb3131 !important;
 	transition: color var(--transitionDuration), background-color var(--transitionDuration);
 	color: #FFF;
+}
+
+[type="checkbox"] {
+	display: none;
+}
+
+[type="select"] {
+	padding: 5px;
 }
 
 .slider {
@@ -40,20 +49,14 @@ select {
 
 #expansion {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-	margin-left: 5%;
-	margin-right: 5%;
-}
-
-.expansion {
 }
 
 button,.dark-toggle,output,select {
 	font-family: Penumbra;
 	border-radius: 15px;
-	border: 2px solid #444;
-	margin: 5px;
+	border: 2px solid var(--highlightBackgroundColor);
 	padding: 6px 6px 4px 6px;
 }
 
@@ -71,20 +74,20 @@ button,.dark-toggle,select {
 
 
 button:hover,.dark-toggle:hover,select:hover {
-  background-color: #333;
-  color: #FFF;
+	background-color: var(--hoverBackgroundColor);
+	color: var(--textColor);
 }
 
-button:active,.dark-toggle:active,select:active {
-  background-color: #444;
-  color: #FFF;
+button:active,.dark-toggle:active,select:active,.selected {
+	background-color: var(--highlightBackgroundColor) !important;
+	color: var(--textColor) !important;
 }
 
 .three-column {
   display: block;
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1400px) {
   .three-column {
     display: grid;
     grid-auto-rows: 1fr;
@@ -99,7 +102,7 @@ button:active,.dark-toggle:active,select:active {
 
 #columns{
   border-radius: 25px;
-  border: 2px solid #444;
+  border: 2px solid var(--highlightBackgroundColor);
   padding: 20px;
 }
 
@@ -107,18 +110,25 @@ li {
 	list-style: none;
 }
 
+#playerList {
+	padding: 5px;
+}
+
 .offerList {
-  padding-left: 2%;
+	border-radius: 15px;
+	background-color: var(--highlightBackgroundColor);
+	transition: color var(--transitionDuration), background-color var(--transitionDuration);
 }
 
 #map {
 	display: block;
-	padding: 4px;
 	border-radius: 15px;
-	border: 2px solid #444;
+	border: 2px solid  var(--highlightBackgroundColor);
 	text-align: center;
-	background-color: #444;
-	color: #FFF;
+	padding-bottom: 2px;
+	background-color: var(--highlightBackgroundColor);
+	color: var(--textColor);
+	transition: color var(--transitionDuration), background-color var(--transitionDuration);
 }
 
 #map:empty {
@@ -129,21 +139,22 @@ li {
 	vertical-align: middle;
 	margin-right: 6px;
 	margin-left: 4px;
-	height: 24px;
+	height: 22px;
 }
 
 .mapIcon {
 	vertical-align: middle;
 	margin-right: 6px;
 	margin-left: 4px;
-	height: 24px;
-	border-radius: 12px;
+	height: 22px;
+	border-radius: 11px;
 }
 
 :root {
 	--backgroundColor: #EEE;
 	--boxBackgroundColor: #FFF;
-	--highlightBackgroundColor: #E8E8E8;
+	--highlightBackgroundColor: #CCC;
+	--hoverBackgroundColor: #E0E0E0;
 	--textColor: #000;
 	--linkColor: #00AA00;
 	--boxShadowColor: rgba(0,0,0, .15);
@@ -155,6 +166,7 @@ li {
 	--backgroundColor: #1d1e22;
 	--boxBackgroundColor: #222;
 	--highlightBackgroundColor: #444;
+	--hoverBackgroundColor: #333;
 	--textColor: #FFF;
 	--linkColor: #00CC00;
 	--boxShadowColor: rgba(255,255,255, .1);
