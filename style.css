@@ -117,6 +117,10 @@ input[type="range"]::-moz-range-thumb {
 	transform: translateX(-100%);
 }
 
+.dlcSelect {
+	width: 75%;
+}
+
 button,
 .dark-toggle,
 select {
