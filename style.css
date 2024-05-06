@@ -127,7 +127,7 @@ select {
 	font-family: Penumbra;
 	border-radius: 15px;
 	border: 2px solid var(--highlightBackgroundColor);
-	padding: 6px 6px 4px 6px;
+	padding: 6px 6px 3px 6px;
 	background-color: var(--backgroundColor);
 	color: var(--textColor);
 	transition: color var(--transitionDuration), background-color var(--transitionDuration), border-color var(--transitionDuration);
