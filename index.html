@@ -6,7 +6,7 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
-  <link rel="stylesheet" href="style.css?version=23">
+  <link rel="stylesheet" href="style.css?version=24">
 
   <!-- favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
@@ -24,7 +24,7 @@
     <div id="columns">
 
 
-      <h2>Game Type</h2>
+      <h2>Select Game Type</h2>
 
       <div id="expansion">
         <button id="noneButton" class="expansion" onclick="selectExpansion('none')">Base&nbsp;Game</button>
@@ -34,15 +34,14 @@
           onclick="selectExpansion('Gathering Storm')">Gathering&nbsp;Storm</button>
       </div>
 
-      <h2>Players</h2>
+      <h2>Adjust Players</h2>
 
       <label>Number of players:</label>
 
-      <input class="slider" type="range" id="numberOfPlayers" min="1" value="1" max="12" step="1" list="numberOfPlayers"
-        oninput="this.nextElementSibling.value = this.value"><output>1</output>
-      <datalist name="numberOfPlayers" id="numberOfPlayers">
+      <input type="range" for="numberOfPlayers" min="1" value="2" max="12" step="1" list="numberOfPlayers" oninput="this.nextElementSibling.value = this.value">
+      <select name="numberOfPlayers" id="numberOfPlayers" oninput="this.previousElementSibling.value = this.value">
         <option value="1">1</option>
-        <option value="2">2</option>
+        <option value="2" selected="selected">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
@@ -53,22 +52,22 @@
         <option value="10">10</option>
         <option value="11">11</option>
         <option value="12">12</option>
-      </datalist>
+      </select>
 
       <br>
 
       <label>Leaders per player:</label>
 
-      <input class="slider" type="range" id="numberOfLeaders" min="1" value="1" max="5" step="1" list="numberOfLeaders"
-        oninput="this.nextElementSibling.value = this.value"><output>1</output>
-      <datalist name="numberOfLeaders" id="numberOfLeaders">
+      <input type="range" id="numberOfLeaders" min="1" value="3" max="5" step="1" list="numberOfLeaders" oninput="this.nextElementSibling.value = this.value">
+      <select name="numberOfLeaders" id="numberOfLeaders" oninput="this.previousElementSibling.value = this.value">
         <option value="1">1</option>
         <option value="2">2</option>
-        <option value="3">3</option>
+        <option value="3" selected="selected">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
-      </datalist>
+      </select>
 
+      <br>
       <br>
       <!--<h2>Settings</h2>
 
@@ -78,13 +77,13 @@
 <input type="checkbox" id="duplicateLeaders" name="duplicateLeaders" value="duplicateLeaders">
 <label for="duplicateLeaders"> Allow duplicate leaders</label><br><br>--><br>
 
-      <p><button type="button" id="confirmButton" onclick="playersSelected()" hidden>Confirm Players and Bans</button>
+      <p><button id="confirmButton" onclick="playersSelected()" hidden>Confirm Players and Bans</button>
       </p>
 
       <p id="map"></p>
 
       <p id="playerList"></p>
-      <button type="button" id="draftButton" onclick="draft()" hidden>Draft!</button>
+      <button id="draftButton" onclick="draft()" hidden>Draft!</button>
     </div>
 
     <div id="columns">
@@ -100,7 +99,7 @@
     </div>
   </div>
 
-  <script src="./main.js?version=18"></script>
+  <script src="./main.js?version=19"></script>
 
 </body>
 

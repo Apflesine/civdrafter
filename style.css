@@ -25,11 +25,7 @@ label {
 	padding: 0px 10px 4px 0px;
 	color: var(--textColor);
 	line-height: 26px;
-}
-
-select {
-	width: 75%;
-	margin: 10px;
+	transition: color var(--transitionDuration);
 }
 
 [type="checkbox"]+label:hover {
@@ -47,44 +43,90 @@ select {
 	display: none;
 }
 
-[type="select"] {
-	padding: 5px;
-}
-
-.slider {
+input[type="range"] {
+	-webkit-appearance: none;
 	width: 100%;
 	float: left;
-	height: 60px;
+	height: 30px;
+	border-radius: 15px;
+	border: 2px solid var(--highlightBackgroundColor);
+	transition: border-color var(--transitionDuration), background-color var(--transitionDuration);
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	input[type='range'] {
+		overflow: hidden;
+		-webkit-appearance: none;
+		background-color: var(--backgroundColor);
+		transition: border-color var(--transitionDuration), background-color var(--transitionDuration);
+	}
+
+	input[type='range']::-webkit-slider-runnable-track {
+		height: 20px;
+		-webkit-appearance: none;
+	}
+
+	input[type='range']::-webkit-slider-thumb {
+		width: 0px;
+		-webkit-appearance: none;
+		height: 0px;
+		cursor: ew-resize;
+		box-shadow: -10000px 0 0 10000px var(--highlightBackgroundColor);
+		transition: box-shadow var(--transitionDuration);
+	}
+
+}
+
+input[type="range"]::-moz-range-progress {
+	height: 30px;
+	background-color: var(--highlightBackgroundColor);
+	transition: border-color var(--transitionDuration), background-color var(--transitionDuration);
+}
+
+input[type="range"]::-moz-range-track {
+	height: 30px;
+	background-color: var(--backgroundColor);
+	transition: border-color var(--transitionDuration), background-color var(--transitionDuration);
+}
+
+input[type="range"]::-moz-range-thumb {
+	height: 0px;
+	width: 0px;
+	border: 0;
 }
 
 #expansion {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	flex-wrap: wrap;
+}
+
+/*
+.expansion {
+    flex-grow: 1;
+    max-width: calc(33.33% - 10px);
+    margin: 5px;
+}
+*/
+
+#confirmButton, #draftButton {
+	position: relative;
+	left: 100%;
+	transform: translateX(-100%);
 }
 
 button,
 .dark-toggle,
-output,
 select {
 	font-family: Penumbra;
 	border-radius: 15px;
 	border: 2px solid var(--highlightBackgroundColor);
 	padding: 6px 6px 4px 6px;
-}
-
-
-button,
-.dark-toggle,
-select {
 	background-color: var(--backgroundColor);
 	color: var(--textColor);
-	transition: color var(--transitionDuration), background-color var(--transitionDuration);
-}
-
-.selected {
-	background-color: #444 !important;
-	color: #FFF !important;
+	transition: color var(--transitionDuration), background-color var(--transitionDuration), border-color var(--transitionDuration);
 }
 
 button:hover,
@@ -123,10 +165,13 @@ select:active,
 	border-radius: 25px;
 	border: 2px solid var(--highlightBackgroundColor);
 	padding: 20px;
+	transition: border-color var(--transitionDuration);
 }
 
 li {
 	list-style: none;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 #playerList {
@@ -144,10 +189,9 @@ li {
 	border-radius: 15px;
 	border: 2px solid var(--highlightBackgroundColor);
 	text-align: center;
-	padding-bottom: 2px;
 	background-color: var(--highlightBackgroundColor);
 	color: var(--textColor);
-	transition: color var(--transitionDuration), background-color var(--transitionDuration);
+	transition: color var(--transitionDuration), background-color var(--transitionDuration), border-color var(--transitionDuration);
 }
 
 #map:empty {
@@ -171,30 +215,24 @@ li {
 
 :root {
 	--backgroundColor: #EEE;
-	--boxBackgroundColor: #FFF;
 	--highlightBackgroundColor: #CCC;
 	--hoverBackgroundColor: #E0E0E0;
 	--textColor: #000;
-	--linkColor: #00AA00;
-	--boxShadowColor: rgba(0, 0, 0, .15);
 	--transitionDuration: 400ms;
 	--spacing: 8px;
 }
 
 .dark-mode {
 	--backgroundColor: #1d1e22;
-	--boxBackgroundColor: #222;
 	--highlightBackgroundColor: #444;
 	--hoverBackgroundColor: #333;
 	--textColor: #FFF;
-	--linkColor: #00CC00;
-	--boxShadowColor: rgba(255, 255, 255, .1);
 }
 
 body {
 	background-color: var(--backgroundColor);
 	color: var(--textColor);
-	transition: color var(--transitionDuration), background-color var(--transitionDuration);
+	transition: color var(--transitionDuration), background-color var(--transitionDuration), border-color var(--transitionDuration);
 }
 
 #header {
