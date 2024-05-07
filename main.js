@@ -111,6 +111,7 @@ let maps = [
 	{ name: "Wetlands", expansion: "none", img: "8/8f/Map_Wetlands_%28Civ6%29.png" }
 ];
 
+let selectedExpansion = localStorage.getItem('selectedExpansion');
 
 function selectExpansion(expansion) {
 	// Set the selected expansion
@@ -121,12 +122,15 @@ function selectExpansion(expansion) {
 		selectedButton.classList.remove('selected');
 	}
 	document.getElementById(expansion.replace(/\s/g, '') + 'Button').classList.add('selected');
-
+    // Save selected expansion to localStorage
+    localStorage.setItem('selectedExpansion', expansion);
 	// Update banned maps and leaders based on selected expansion
 	updateBannedMaps(expansion);
 	updateBannedLeaders(expansion);
 	loadBannedSelection();
 }
+
+selectExpansion(selectedExpansion);
 
 // Function to save banned maps and leaders selection to localStorage
 function saveBannedSelection() {
