@@ -39,7 +39,7 @@ label {
 	color: #FFF;
 }
 
-[type="checkbox"] {
+[type="checkbox"], #expansionSelected {
 	display: none;
 }
 
