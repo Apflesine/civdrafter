@@ -39,7 +39,8 @@ label {
 	color: #FFF;
 }
 
-[type="checkbox"], #expansionSelected {
+[type="checkbox"],
+#expansionSelected {
 	display: none;
 }
 
@@ -99,7 +100,8 @@ input[type="range"]::-moz-range-thumb {
 	border: 0;
 }
 
-#expansion, #draftButtons {
+#expansion,
+#draftButtons {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;

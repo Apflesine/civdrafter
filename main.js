@@ -120,8 +120,8 @@ function selectExpansion(expansion) {
 		selectedButton.classList.remove('selected');
 	}
 	document.getElementById(expansion.replace(/\s/g, '') + 'Button').classList.add('selected');
-    // Save selected expansion to localStorage
-    localStorage.setItem('selectedExpansion', expansion);
+	// Save selected expansion to localStorage
+	localStorage.setItem('selectedExpansion', expansion);
 	// Update banned maps and leaders based on selected expansion
 	updateBannedMaps(expansion);
 	updateBannedLeaders(expansion);
@@ -281,15 +281,15 @@ function leadersSelected() {
 function loadPlayers() {
 	const numberOfPlayers = localStorage.getItem('numberOfPlayers');
 	const numberOfLeaders = localStorage.getItem('numberOfLeaders');
-  
+
 	if (numberOfPlayers) {
-	  document.getElementById('numberOfPlayers').value = numberOfPlayers;
-	  document.getElementById('numberOfPlayersSlider').value = numberOfPlayers;
+		document.getElementById('numberOfPlayers').value = numberOfPlayers;
+		document.getElementById('numberOfPlayersSlider').value = numberOfPlayers;
 	}
-  
+
 	if (numberOfLeaders) {
-	  document.getElementById('numberOfLeaders').value = numberOfLeaders;
-	  document.getElementById('numberOfLeadersSlider').value = numberOfLeaders;
+		document.getElementById('numberOfLeaders').value = numberOfLeaders;
+		document.getElementById('numberOfLeadersSlider').value = numberOfLeaders;
 	}
 }
 
