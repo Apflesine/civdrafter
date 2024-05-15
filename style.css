@@ -45,6 +45,7 @@ label {
 
 input[type="range"] {
 	-webkit-appearance: none;
+	appearance: none;
 	width: 100%;
 	float: left;
 	height: 30px;
@@ -59,6 +60,7 @@ input[type="range"] {
 	input[type='range'] {
 		overflow: hidden;
 		-webkit-appearance: none;
+		appearance: none;
 		background-color: var(--backgroundColor);
 		transition: border-color var(--transitionDuration), background-color var(--transitionDuration);
 	}
@@ -97,7 +99,7 @@ input[type="range"]::-moz-range-thumb {
 	border: 0;
 }
 
-#expansion {
+#expansion, #draftButtons {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
@@ -110,12 +112,6 @@ input[type="range"]::-moz-range-thumb {
     margin: 5px;
 }
 */
-
-#confirmButton, #draftButton {
-	position: relative;
-	left: 100%;
-	transform: translateX(-100%);
-}
 
 .dlcSelect {
 	width: 75%;
