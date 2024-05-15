@@ -111,8 +111,6 @@ let maps = [
 	{ name: "Wetlands", expansion: "none", img: "8/8f/Map_Wetlands_%28Civ6%29.png" }
 ];
 
-let selectedExpansion = localStorage.getItem('selectedExpansion');
-
 function selectExpansion(expansion) {
 	// Set the selected expansion
 	selectedExpansion = expansion;
@@ -130,7 +128,8 @@ function selectExpansion(expansion) {
 	loadBannedSelection();
 }
 
-selectExpansion(selectedExpansion);
+selectExpansion(localStorage.getItem('selectedExpansion'));
+playersSelected()
 
 // Function to save banned maps and leaders selection to localStorage
 function saveBannedSelection() {
@@ -270,9 +269,14 @@ function playersSelected() {
 		playerListEl.innerHTML += "<li class='offerList'><div id='leadersPlayer" + i + "'></div></li>";
 	}
 
+	// show draft button
+	document.getElementById("draftButton").hidden = false;
+}
+
+function draftMap() {
+
 	// get banned leader checkboxes, as an array (not an HTMLCollection)
 	let bannedMapEls = [...document.getElementsByClassName("banCheckboxm")];
-
 	let expansion = selectedExpansion;
 	let mapsPool = maps.filter(map => {
 		// check map expansion
@@ -290,17 +294,14 @@ function playersSelected() {
 
 		return true;
 	});
-
 	let draftedMap = mapsPool[getRandomInt(0, mapsPool.length - 1)];
 	let mapDisplay = document.getElementById("map");
 	mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
-
-	// show draft button
-	document.getElementById("draftButton").hidden = false;
 }
 
 // player dlc preferences have also been chosen - draft leaders
 function draft() {
+	playersSelected()
 	let expansion = selectedExpansion;
 	let offeredLeaders = []; // list of leaders that have already been offered
 

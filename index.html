@@ -38,8 +38,8 @@
 
       <label>Number of players:</label>
 
-      <input type="range" for="numberOfPlayers" min="1" value="2" max="12" step="1" list="numberOfPlayers" oninput="this.nextElementSibling.value = this.value">
-      <select name="numberOfPlayers" id="numberOfPlayers" oninput="this.previousElementSibling.value = this.value">
+      <input type="range" for="numberOfPlayers" min="1" max="12" value="2" step="1" list="numberOfPlayers" oninput="this.nextElementSibling.value = this.value; playersSelected()">
+      <select name="numberOfPlayers" id="numberOfPlayers" oninput="this.previousElementSibling.value = this.value; playersSelected()">
         <option value="1">1</option>
         <option value="2" selected="selected">2</option>
         <option value="3">3</option>
@@ -58,7 +58,7 @@
 
       <label>Leaders per player:</label>
 
-      <input type="range" id="numberOfLeaders" min="1" value="3" max="5" step="1" list="numberOfLeaders" oninput="this.nextElementSibling.value = this.value">
+      <input type="range" id="numberOfLeaders" min="1" max="5" value="3" step="1" list="numberOfLeaders" oninput="this.nextElementSibling.value = this.value">
       <select name="numberOfLeaders" id="numberOfLeaders" oninput="this.previousElementSibling.value = this.value">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -77,13 +77,13 @@
 <input type="checkbox" id="duplicateLeaders" name="duplicateLeaders" value="duplicateLeaders">
 <label for="duplicateLeaders"> Allow duplicate leaders</label><br><br>--><br>
 
-      <p><button id="confirmButton" onclick="playersSelected()" hidden>Confirm Players and Bans</button>
+      <p><button id="confirmButton" onclick="draftMap()" hidden>Draft Map</button>
       </p>
 
       <p id="map"></p>
 
       <p id="playerList"></p>
-      <button id="draftButton" onclick="draft()" hidden>Draft!</button>
+      <button id="draftButton" onclick="draft()" hidden>Draft Leaders</button>
     </div>
 
     <div id="columns">
@@ -99,7 +99,7 @@
     </div>
   </div>
 
-  <script src="./main.js?version=21"></script>
+  <script src="./main.js?version=23"></script>
 
 </body>
 
