@@ -128,6 +128,7 @@ function selectExpansion(expansion) {
 	loadBannedSelection();
 }
 
+loadPlayers();
 selectExpansion(localStorage.getItem('selectedExpansion'));
 playersSelected();
 
@@ -215,8 +216,6 @@ function updateBannedLeaders(expansion) {
 			}
 		}
 	}
-	// show confirm button
-	document.getElementById("confirmButton").hidden = false;
 }
 
 // generate banned maps checkboxes depending on which gamemode is selected
@@ -269,13 +268,33 @@ function playersSelected() {
 		playerListEl.innerHTML += "<li class='offerList'><div id='leadersPlayer" + i + "'></div></li>";
 	}
 
-	// show draft button
-	document.getElementById("draftButton").hidden = false;
+	const numberOfPlayers = document.getElementById('numberOfPlayers');
+	localStorage.setItem('numberOfPlayers', numberOfPlayers.value);
+}
+
+function leadersSelected() {
+	const numberOfLeaders = document.getElementById('numberOfLeaders');
+	localStorage.setItem('numberOfLeaders', numberOfLeaders.value);
+}
+
+function loadPlayers() {
+	const numberOfPlayers = localStorage.getItem('numberOfPlayers');
+	const numberOfLeaders = localStorage.getItem('numberOfLeaders');
+  
+	if (numberOfPlayers) {
+	  document.getElementById('numberOfPlayers').value = numberOfPlayers;
+	  document.getElementById('numberOfPlayersSlider').value = numberOfPlayers;
+	}
+  
+	if (numberOfLeaders) {
+	  document.getElementById('numberOfLeaders').value = numberOfLeaders;
+	  document.getElementById('numberOfLeadersSlider').value = numberOfLeaders;
+	}
 }
 
 function draftMap() {
 
-	// get banned leader checkboxes, as an array (not an HTMLCollection)
+	// get banned map checkboxes, as an array (not an HTMLCollection)
 	let bannedMapEls = [...document.getElementsByClassName("banCheckboxm")];
 	let expansion = selectedExpansion;
 	let mapsPool = maps.filter(map => {
@@ -301,7 +320,6 @@ function draftMap() {
 
 // player dlc preferences have also been chosen - draft leaders
 function draft() {
-	playersSelected()
 	let expansion = selectedExpansion;
 	let offeredLeaders = []; // list of leaders that have already been offered
 
