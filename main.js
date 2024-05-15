@@ -129,7 +129,7 @@ function selectExpansion(expansion) {
 }
 
 selectExpansion(localStorage.getItem('selectedExpansion'));
-playersSelected()
+playersSelected();
 
 // Function to save banned maps and leaders selection to localStorage
 function saveBannedSelection() {
