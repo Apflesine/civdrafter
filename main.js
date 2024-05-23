@@ -127,6 +127,7 @@ function selectExpansion(expansion) {
 	updateBannedLeaders(expansion);
 	loadBannedSelection();
 	document.getElementById("expansionSelected").style.display = "block";
+	playersSelected();
 }
 
 loadPlayers();
