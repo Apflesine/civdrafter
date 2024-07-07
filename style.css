@@ -119,6 +119,11 @@ input[type="range"]::-moz-range-thumb {
 	float: right;
 }
 
+i,
+{
+	font-style: normal;
+}
+
 button,
 .dark-toggle,
 select {
