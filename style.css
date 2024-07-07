@@ -116,7 +116,7 @@ input[type="range"]::-moz-range-thumb {
 */
 
 .dlcSelect {
-	width: 75%;
+	float: right;
 }
 
 button,
