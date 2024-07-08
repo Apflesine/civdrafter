@@ -134,6 +134,36 @@ loadPlayers();
 selectExpansion(localStorage.getItem('selectedExpansion'));
 playersSelected();
 
+// Function to clear all selected maps
+function clearAllMaps() {
+    let bannedMapCheckboxes = document.getElementsByClassName("banCheckboxm");
+    for (let i = 0; i < bannedMapCheckboxes.length; i++) {
+        bannedMapCheckboxes[i].checked = false;
+    }
+    saveBannedSelection();
+}
+
+// Function to clear all selected leaders
+function clearAllLeaders() {
+    let bannedLeaderCheckboxes = document.getElementsByClassName("banCheckbox");
+    for (let i = 0; i < bannedLeaderCheckboxes.length; i++) {
+        bannedLeaderCheckboxes[i].checked = false;
+    }
+    saveBannedSelection();
+}
+
+// Function to update the display of selected maps count
+function updateSelectedMapsCount() {
+    let selectedCount = document.querySelectorAll(".banCheckboxm:checked").length;
+    document.getElementById('selectedMapsCount').innerText = `${selectedCount}`;
+}
+
+// Function to update the display of selected leaders count
+function updateSelectedLeadersCount() {
+    let selectedCount = document.querySelectorAll(".banCheckbox:checked").length;
+    document.getElementById('selectedLeadersCount').innerText = `${selectedCount}`;
+}
+
 // Function to save banned maps and leaders selection to localStorage
 function saveBannedSelection() {
 	let bannedMapsSelection = [];
@@ -156,6 +186,10 @@ function saveBannedSelection() {
 		}
 	}
 	localStorage.setItem('bannedLeaders', JSON.stringify(bannedLeadersSelection));
+
+    // Update the selected counts
+    updateSelectedMapsCount();
+    updateSelectedLeadersCount();
 }
 
 // Function to load banned maps and leaders selection from localStorage
@@ -178,6 +212,10 @@ function loadBannedSelection() {
 			bannedLeaderCheckboxes[i].checked = true;
 		}
 	}
+
+	    // Update the selected counts
+		updateSelectedMapsCount();
+		updateSelectedLeadersCount();
 }
 
 // generate banned leaders checkboxes depending on which gamemode is selected
@@ -207,8 +245,7 @@ function updateBannedLeaders(expansion) {
 			// label
 			let labelNode = document.createElement("label");
 			labelNode.htmlFor = "banCheckbox" + i;
-			labelNode.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + leaders[i].img + "' class='leaderIcon'>" + leaderString;
-			bannedLeadersEl.appendChild(labelNode);
+			labelNode.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + leaders[i].img + "' class='leaderIcon'>" + leaderString; bannedLeadersEl.appendChild(labelNode);
 			// br
 			let breakNode = document.createElement("br");
 			bannedLeadersEl.appendChild(breakNode);
@@ -218,6 +255,9 @@ function updateBannedLeaders(expansion) {
 			}
 		}
 	}
+	
+    // Update the selected counts
+    updateSelectedLeadersCount();
 }
 
 // generate banned maps checkboxes depending on which gamemode is selected
@@ -247,7 +287,7 @@ function updateBannedMaps(expansion) {
 			// label
 			let labelNode = document.createElement("label");
 			labelNode.htmlFor = "banCheckboxm" + i;
-			labelNode.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + maps[i].img + "' class='mapIcon' onclick='saveBannedSelection();'>" + mapString; bannedMapsEl.appendChild(labelNode);
+			labelNode.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + maps[i].img + "' class='mapIcon'>" + mapString; bannedMapsEl.appendChild(labelNode);
 			// br
 			let breakNode = document.createElement("br");
 			bannedMapsEl.appendChild(breakNode);
@@ -257,6 +297,9 @@ function updateBannedMaps(expansion) {
 			}
 		}
 	}
+
+    // Update the selected counts
+    updateSelectedMapsCount();
 }
 
 // number of players and number of leaders has been chosen
@@ -392,15 +435,6 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// On page load set the theme.
-(function () {
-	let onpageLoad = localStorage.getItem("theme") || "";
-	let element = document.body;
-	element.classList.add(onpageLoad);
-	document.getElementById("theme").textContent =
-		localStorage.getItem("theme") || "light";
-})();
-
 function themeToggle() {
 	let element = document.body;
 	element.classList.toggle("dark-mode");
@@ -414,3 +448,12 @@ function themeToggle() {
 
 	document.getElementById("theme").textContent = localStorage.getItem("theme");
 }
+
+// On page load set the theme.
+(function () {
+	let onpageLoad = localStorage.getItem("theme") || "";
+	let element = document.body;
+	element.classList.add(onpageLoad);
+	document.getElementById("theme").textContent =
+		localStorage.getItem("theme") || "light";
+})();

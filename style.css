@@ -107,13 +107,21 @@ input[type="range"]::-moz-range-thumb {
 	flex-wrap: wrap;
 }
 
-/*
-.expansion {
-    flex-grow: 1;
-    max-width: calc(33.33% - 10px);
-    margin: 5px;
+#buttonMapsCount:hover span,#buttonLeadersCount:hover span {
+	display:none
 }
-*/
+
+#buttonMapsCount:hover:before,#buttonLeadersCount:hover:before {
+	content: "X"
+}
+
+#buttonMapsCount,#buttonLeadersCount {
+	font-size: 18px;
+	width: 35px;
+	float: right;
+	margin-right: 20px;
+	text-align: center;
+}
 
 .dlcSelect {
 	float: right;
