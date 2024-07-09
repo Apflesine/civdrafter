@@ -155,16 +155,23 @@ function decodeDraftFromUrl() {
         mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
     }
 
-    if (urlParams.has('leaders')) {
-        draft.leaders = urlParams.get('leaders');
 
-        // Clear existing drafted leaders display
-        document.querySelectorAll("[id^='leadersPlayer']").forEach(element => {
-            element.innerHTML = "";
-        });
+    if (urlParams.has('leaders')) {
+        draft.leaders = JSON.parse(urlParams.get('leaders'));
+		
+		let player;
+		i = player in draft.leaders;
+		let playerListEl = document.getElementById("playerList");
+		playerListEl.innerHTML = "";
+		for (let i in draft.leaders) {
+			// dlc select dropdown
+			playerListEl.innerHTML += "<i contenteditable='true' spellcheck='false'>Player " + i + "</i> <select class='dlcSelect' id='dlcPlayer" + i + "'><option value='none'>No DLC </option><option value='Base Game DLC'>Platinum Edition </option><option value='Frontier Pass'>Platinum Edition + Frontier Pass</option><option value='Leader Pass' selected>Platinum Edition + Frontier Pass + Leader Pass</option></select>"
+			// player leader holder
+			playerListEl.innerHTML += "<li class='offerList'><div id='leadersPlayer" + i + "'></div></li>";
+		}
 
         // Display drafted leaders
-        for (let player in draft.leaders) {
+        for (player in draft.leaders) {
             draft.leaders[player].forEach((leaderIndex) => {
                 let draftedLeader = leaders[leaderIndex];
                 if (draftedLeader) {
@@ -172,7 +179,8 @@ function decodeDraftFromUrl() {
                 }
             });
         }
-    }
+	}
+    
 }
 
 /*
@@ -581,14 +589,20 @@ function draft() {
     }
 
     // Update URL with drafted leaders and map
-    updateUrlWithDraft(draftResults);
+    updateUrlWithDraft({ leaders: draftResults });
 }
 
 
 function updateUrlWithDraft(draft) {
     let url = new URL(window.location.href);
-    for (let key in draft) {
+	for (let key in draft) {
+        if (key === "leaders") {
+            // Serialize leaders as JSON
+            url.searchParams.set(key, JSON.stringify(draft[key]));
+        } else {
+            // Directly set other parameters
             url.searchParams.set(key, draft[key]);
+        }
     }
     // Add expansion to the URL
     url.searchParams.set('expansion', selectedExpansion);
