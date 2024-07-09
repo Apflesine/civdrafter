@@ -156,8 +156,7 @@ function decodeDraftFromUrl() {
         draft.leaders = JSON.parse(urlParams.get('leaders'));
 
         // Clear existing drafted leaders display
-        let numberOfPlayers = Object.keys(draft.leaders).length;
-        for (let player = 1; player <= numberOfPlayers; player++) {
+        for (let player in draft.leaders) {
             document.getElementById("leadersPlayer" + player).innerHTML = "";
         }
 
@@ -172,7 +171,6 @@ function decodeDraftFromUrl() {
         }
     }
 }
-
 
 /*
 function decodeDraftFromUrl() {
@@ -513,6 +511,7 @@ function draft() {
 	// document.getElementById("shareUrlButton").style.display = "block";
 }
 
+
 function updateUrlWithDraft(draft) {
     let url = new URL(window.location.href);
 
@@ -530,10 +529,34 @@ function updateUrlWithDraft(draft) {
     }
 
     url.searchParams.set('expansion', selectedExpansion);
-	url.searchParams.set('map', draft[map]);
+	url.searchParams.set('map', draft[maps]);
     window.history.pushState({}, '', url);
 }
 
+
+
+/*
+function updateUrlWithDraft(draft) {
+    let url = new URL(window.location.href);
+
+    // Clear existing leader parameters to avoid duplicates
+    url.searchParams.delete('leaders');
+    for (let key in draft.leaders) {
+        url.searchParams.delete(`player${key}`);
+    }
+
+    // Append each player's drafted leaders
+    for (let player in draft.leaders) {
+        if (draft.leaders[player].length > 0) {
+            url.searchParams.set(`player${player}`, draft.leaders[player].join(','));
+        }
+    }
+
+    url.searchParams.set('expansion', selectedExpansion);
+	url.searchParams.set('map', draft[maps]);
+    window.history.pushState({}, '', url);
+}
+*/
 
 // inclusive
 function getRandomInt(min, max) {
