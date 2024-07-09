@@ -130,51 +130,42 @@ function selectExpansion(expansion) {
 	playersSelected();
 }
 window.onload = () => {
-    decodeDraftResults();
+    decodeDraftFromUrl();
 	loadPlayers();
 	selectExpansion(localStorage.getItem('selectedExpansion'));
 	playersSelected();
 };
 
-function decodeDraftResults() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const encodedMap = urlParams.get('map');
-    const encodedLeaders = urlParams.get('leaders');
+function decodeDraftFromUrl() {
+    let url = new URL(window.location.href);
+    let draft = {
+        map: url.searchParams.get('map'),
+        leaders: url.searchParams.get('leaders') ? url.searchParams.get('leaders').split(',').map(Number) : []
+    };
 
-    if (encodedMap !== null) {
-        const draftedMap = maps[parseInt(encodedMap)];
+    if (draft.map !== null) {
+        let draftedMap = maps[parseInt(draft.map)];
         let mapDisplay = document.getElementById("map");
-        mapDisplay.innerHTML = "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
+        mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
     }
 
-    if (encodedLeaders !== null) {
-        const draftedLeaders = encodedLeaders.split(',').map(pair => {
-            const [player, leaderIndex] = pair.split('-').map(Number);
-            return { player, leader: leaders[leaderIndex] };
-        });
-
-        draftedLeaders.forEach(draft => {
-            let playerDisplay = document.getElementById("leadersPlayer" + draft.player);
-            playerDisplay.innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draft.leader.img + "' class='leaderIcon'>" + draft.leader.name + " [" + draft.leader.civilization + "]<br>";
+    if (draft.leaders.length > 0) {
+        draft.leaders.forEach((leaderIndex, player) => {
+            let draftedLeader = leaders[leaderIndex];
+            document.getElementById("leadersPlayer" + (player + 1)).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
         });
     }
 }
 
-function updateDraftUrl(draftedMap, draftedLeaders) {
-    const currentUrl = window.location.origin + window.location.pathname;
-    let newUrl = `${currentUrl}?`;
-
-    if (draftedMap) {
-        const encodedMap = maps.findIndex(map => map.name === draftedMap.name);
-        newUrl += `map=${encodedMap}&`;
+function updateUrlWithDraft(draft) {
+    let url = new URL(window.location.href);
+    for (let key in draft) {
+        url.searchParams.set(key, draft[key]);
     }
+    window.history.pushState({}, '', url);
 
-    if (draftedLeaders) {
-        const encodedLeaders = draftedLeaders.map(draft => `${draft.player}-${leaders.findIndex(leader => leader.name === draft.leader.name)}`).join(',');
-        newUrl += `leaders=${encodedLeaders}`;
-    }
-
-    window.history.pushState(null, '', newUrl);
+    // For debugging: Display the URL under the "share url" button
+    document.getElementById("debugUrl").textContent = url.toString();
 }
 
 document.getElementById('shareUrlButton').addEventListener('click', () => {
@@ -411,10 +402,8 @@ function draftMap() {
 	let mapDisplay = document.getElementById("map");
 	mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
 
-    // Encode and update URL
-    updateDraftUrl(draftedMap, null);
-	// Update the debug display
-    document.getElementById('debugm').textContent = `debug: ${draftedMap}`;
+    // Update URL with drafted map
+    updateUrlWithDraft({ map: maps.indexOf(draftedMap) });
 }
 
 // player dlc preferences have also been chosen - draft leaders
@@ -483,10 +472,10 @@ function draft() {
 		}
 	}
 
-    // Encode and update URL
-    updateDraftUrl(null, draftResults);
+    // Update URL with drafted leaders
+    updateUrlWithDraft({ leaders: draftResults });
 
-	// document.getElementById("shareUrlButton").style.display = "block";
+	document.getElementById("shareUrlButton").style.display = "block";
 }
 
 function updateDraftUrl(draftedMap, draftedLeaders) {
@@ -504,15 +493,10 @@ function updateDraftUrl(draftedMap, draftedLeaders) {
     }
 
     window.history.pushState(null, '', newUrl);
-	
-	// Update the debug URL display
-    document.getElementById('debugUrl').textContent = `Current URL: ${newUrl}`;
 }
 
-document.getElementById('shareUrlButton').addEventListener('click', () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-        alert('URL copied to clipboard!');
-    });
+document.getElementById("shareUrlButton").addEventListener("click", () => {
+    updateUrlWithDraft({ map: null, leaders: [] });
 });
 
 // inclusive
