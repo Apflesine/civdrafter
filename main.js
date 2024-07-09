@@ -581,7 +581,7 @@ function draft() {
     }
 
     // Update URL with drafted leaders and map
-    updateUrlWithDraft( leaders: draftResults);
+    updateUrlWithDraft(draftResults);
 }
 
 
