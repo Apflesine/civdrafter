@@ -130,10 +130,10 @@ function selectExpansion(expansion) {
 	playersSelected();
 }
 window.onload = () => {
-    decodeDraftFromUrl();
 	loadPlayers();
 	selectExpansion(localStorage.getItem('selectedExpansion'));
 	playersSelected();
+    decodeDraftFromUrl();
 };
 
 function decodeDraftFromUrl() {
@@ -469,7 +469,7 @@ function draft() {
     // Update URL with drafted leaders
     updateUrlWithDraft({ leaders: draftResults });
 
-	document.getElementById("shareUrlButton").style.display = "block";
+	// document.getElementById("shareUrlButton").style.display = "block";
 }
 
 function updateUrlWithDraft(draft) {
