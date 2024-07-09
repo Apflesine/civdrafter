@@ -460,8 +460,6 @@ function draft() {
 		// clear previously drafted leaders for player (if there were any)
 		document.getElementById("leadersPlayer" + player).innerHTML = "";
 
-        offeredLeaders[player] = [];
-
 		for (let i = 1; i <= parseInt(document.getElementById("numberOfLeaders").value); i++) {
 			// filter to only include valid leaders
 			let leadersPool = leaders.filter(leader => {
