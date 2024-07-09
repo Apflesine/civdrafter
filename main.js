@@ -130,11 +130,11 @@ function selectExpansion(expansion) {
 	playersSelected();
 }
 window.onload = () => {
+	loadPlayers();
     var selectedExpansion = localStorage.getItem('selectedExpansion');
     if (selectedExpansion) {
         selectExpansion(selectedExpansion); 
-	};
-	loadPlayers();
+	} else {}
 	playersSelected();
     decodeDraftFromUrl();
 };
@@ -581,7 +581,7 @@ function draft() {
     }
 
     // Update URL with drafted leaders and map
-    updateUrlWithDraft(draftResults);
+    updateUrlWithDraft( leaders: draftResults);
 }
 
 
