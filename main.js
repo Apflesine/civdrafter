@@ -137,39 +137,39 @@ window.onload = () => {
 };
 
 function decodeDraftFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const mapIndex = urlParams.get('map');
-    const expansion = urlParams.get('expansion');
-    const leaders = {};
+    let urlParams = new URLSearchParams(window.location.search);
+    let draft = {};
 
-    // Get expansion and select it
-    if (expansion) {
-        selectExpansion(expansion);
-    }
-
-    // Get map and display it
-    if (mapIndex !== null) {
-        let draftedMap = maps[mapIndex];
+    if (urlParams.has('map')) {
+        draft.map = parseInt(urlParams.get('map'));
+        let draftedMap = maps[draft.map];
         let mapDisplay = document.getElementById("map");
         mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
     }
 
-    // Get leaders for each player and display them
-    urlParams.forEach((value, key) => {
-        if (key.startsWith('player')) {
-            const player = key.replace('player', '');
-            leaders[player] = value.split(',').map(index => parseInt(index));
-        }
-    });
+    if (urlParams.has('expansion')) {
+        draft.expansion = urlParams.get('expansion');
+        selectExpansion(draft.expansion);
+    }
 
-    for (let player in leaders) {
-        let playerLeaders = leaders[player];
-        let playerContainer = document.getElementById("leadersPlayer" + player);
-        playerContainer.innerHTML = ""; // Clear previous contents
-        playerLeaders.forEach(leaderIndex => {
-            let leader = leaders[leaderIndex];
-            playerContainer.innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + leader.img + "' class='leaderIcon'>" + leader.name + " [" + leader.civilization + "]<br>";
-        });
+    if (urlParams.has('leaders')) {
+        draft.leaders = JSON.parse(urlParams.get('leaders'));
+
+        // Clear existing drafted leaders display
+        let numberOfPlayers = Object.keys(draft.leaders).length;
+        for (let player = 1; player <= numberOfPlayers; player++) {
+            document.getElementById("leadersPlayer" + player).innerHTML = "";
+        }
+
+        // Display drafted leaders
+        for (let player in draft.leaders) {
+            draft.leaders[player].forEach((leaderIndex) => {
+                let draftedLeader = leaders[leaderIndex];
+                if (draftedLeader) {
+                    document.getElementById("leadersPlayer" + player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
+                }
+            });
+        }
     }
 }
 
@@ -530,6 +530,7 @@ function updateUrlWithDraft(draft) {
     }
 
     url.searchParams.set('expansion', selectedExpansion);
+	url.searchParams.set('map', draftedMap)
     window.history.pushState({}, '', url);
 }
 
