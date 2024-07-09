@@ -130,8 +130,11 @@ function selectExpansion(expansion) {
 	playersSelected();
 }
 window.onload = () => {
+    var selectedExpansion = localStorage.getItem('selectedExpansion');
+    if (selectedExpansion) {
+        selectExpansion(selectedExpansion); 
+	}
 	loadPlayers();
-	selectExpansion(localStorage.getItem('selectedExpansion'));
 	playersSelected();
     decodeDraftFromUrl();
 };
@@ -585,13 +588,7 @@ function draft() {
 function updateUrlWithDraft(draft) {
     let url = new URL(window.location.href);
     for (let key in draft) {
-        if (key === "leaders") {
-            // Serialize leaders as JSON
-            url.searchParams.set(key, JSON.stringify(draft[key]));
-        } else {
-            // Directly set other parameters
             url.searchParams.set(key, draft[key]);
-        }
     }
     // Add expansion to the URL
     url.searchParams.set('expansion', selectedExpansion);
