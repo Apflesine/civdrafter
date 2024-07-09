@@ -438,7 +438,7 @@ function draftMap() {
     updateUrlWithDraft({ map: maps.indexOf(draftedMap) });
 }
 
-// player dlc preferences have also been chosen - draft leaders
+/* player dlc preferences have also been chosen - draft leaders
 function draft() {
 	let expansion = selectedExpansion;
 	let offeredLeaders = []; // list of leaders that have already been offered
@@ -509,6 +509,76 @@ function draft() {
     updateUrlWithDraft({ leaders: draftResults });
 
 	// document.getElementById("shareUrlButton").style.display = "block";
+}
+*/
+
+function draft() {
+    let expansion = selectedExpansion;
+    let offeredLeaders = []; // list of leaders that have already been offered
+    let draftResults = {};
+
+    // Get banned leader checkboxes, as an array (not an HTMLCollection)
+    let bannedLeaderEls = [...document.getElementsByClassName("banCheckbox")];
+
+    for (let player = 1; player <= parseInt(document.getElementById("numberOfPlayers").value); player++) {
+        // Find DLC preference for player
+        let playerPaywall = document.getElementById("dlcPlayer" + player).value;
+
+        // Clear previously drafted leaders for player (if there were any)
+        document.getElementById("leadersPlayer" + player).innerHTML = "";
+        draftResults[player] = [];
+
+        for (let i = 1; i <= parseInt(document.getElementById("numberOfLeaders").value); i++) {
+            // Filter to only include valid leaders
+            let leadersPool = leaders.filter(leader => {
+                // Check leader expansion
+                if (leader.expansion == "Rise and Fall" && expansion == "none") {
+                    return false;
+                }
+                if (leader.expansion == "Gathering Storm" && (expansion == "none" || expansion == "Rise and Fall")) {
+                    return false;
+                }
+
+                // Check leader paywall
+                if (leader.paywall == "Base Game DLC" && playerPaywall == "none") {
+                    return false;
+                }
+                if (leader.paywall == "Frontier Pass" && (playerPaywall == "none" || playerPaywall == "Base Game DLC")) {
+                    return false;
+                }
+                if (leader.paywall == "Leader Pass" && playerPaywall != "Leader Pass") {
+                    return false;
+                }
+
+                // Check if leader is banned
+                if (bannedLeaderEls.findIndex(leaderCheckbox => leaderCheckbox.value == leader.name + " [" + leader.civilization + "]" && leaderCheckbox.checked) != -1) {
+                    return false;
+                }
+
+                // Check if leader has already been picked
+                if (offeredLeaders.findIndex(offeredLeader => offeredLeader.name == leader.name || offeredLeader.civilization == leader.civilization) != -1) {
+                    return false;
+                }
+
+                return true;
+            });
+
+            // Pick random from leaders pool
+            let draftedLeader = leadersPool[getRandomInt(0, leadersPool.length - 1)];
+            if (typeof draftedLeader == "undefined") {
+                document.getElementById("leadersPlayer" + player).innerHTML += "Not enough available leaders<br>";
+            }
+            else {
+                offeredLeaders.push(draftedLeader);
+                draftResults[player].push(leaders.indexOf(draftedLeader));
+                // Show leader to player
+                document.getElementById("leadersPlayer" + player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
+            }
+        }
+    }
+
+    // Update URL with drafted leaders and map
+    updateUrlWithDraft(draftResults);
 }
 
 
