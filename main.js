@@ -145,8 +145,42 @@ function decodeDraftFromUrl() {
     };
 
     // Apply selected expansion
+    selectedExpansion = draft.expansion;
     selectExpansion(draft.expansion);
 
+    if (draft.map !== null) {
+        let draftedMap = maps[parseInt(draft.map)];
+        let mapDisplay = document.getElementById("map");
+        mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
+    }
+
+    if (draft.leaders.length > 0) {
+        // Clear previously displayed leaders
+        for (let player = 1; player <= parseInt(document.getElementById("numberOfPlayers").value); player++) {
+            document.getElementById("leadersPlayer" + player).innerHTML = "";
+        }
+
+        // Display drafted leaders for each player
+        draft.leaders.forEach((leaderIndex, index) => {
+            let player = index % parseInt(document.getElementById("numberOfPlayers").value) + 1;
+            let draftedLeader = leaders[leaderIndex];
+            document.getElementById("leadersPlayer" + player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
+        });
+    }
+}
+
+/*
+function decodeDraftFromUrl() {
+    let url = new URL(window.location.href);
+    let draft = {
+        map: url.searchParams.get('map'),
+        leaders: url.searchParams.get('leaders') ? url.searchParams.get('leaders').split(',').map(Number) : [],
+        expansion: url.searchParams.get('expansion')
+    };
+
+    if (draft.expansion !== null) {
+		selectExpansion(draft.expansion);
+	}
 
     if (draft.map !== null) {
         let draftedMap = maps[parseInt(draft.map)];
@@ -161,6 +195,7 @@ function decodeDraftFromUrl() {
         });
     }
 }
+*/
 
 document.getElementById('shareUrlButton').addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -459,9 +494,9 @@ function draft() {
 			}
 			else {
 				offeredLeaders.push(draftedLeader);
+                draftResults.push(leaders.indexOf(draftedLeader));
 				// show leader to player
 				document.getElementById("leadersPlayer" + player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
-                draftResults.push(leaders.indexOf(draftedLeader));
 			}
 		}
 	}
