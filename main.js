@@ -145,7 +145,8 @@ function decodeDraftFromUrl() {
     };
 
     // Apply selected expansion
-    selectedExpansion = draft.expansion;
+    selectExpansion(draft.expansion);
+
 
     if (draft.map !== null) {
         let draftedMap = maps[parseInt(draft.map)];
