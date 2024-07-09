@@ -133,7 +133,7 @@ window.onload = () => {
     var selectedExpansion = localStorage.getItem('selectedExpansion');
     if (selectedExpansion) {
         selectExpansion(selectedExpansion); 
-	}
+	};
 	loadPlayers();
 	playersSelected();
     decodeDraftFromUrl();
@@ -143,6 +143,11 @@ function decodeDraftFromUrl() {
     let urlParams = new URLSearchParams(window.location.search);
     let draft = {};
 
+    if (urlParams.has('expansion')) {
+        draft.expansion = urlParams.get('expansion');
+        selectExpansion(draft.expansion);
+    }
+
     if (urlParams.has('map')) {
         draft.map = parseInt(urlParams.get('map'));
         let draftedMap = maps[draft.map];
@@ -150,13 +155,8 @@ function decodeDraftFromUrl() {
         mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
     }
 
-    if (urlParams.has('expansion')) {
-        draft.expansion = urlParams.get('expansion');
-        selectExpansion(draft.expansion);
-    }
-
     if (urlParams.has('leaders')) {
-        draft.leaders = JSON.parse(urlParams.get('leaders'));
+        draft.leaders = urlParams.get('leaders');
 
         // Clear existing drafted leaders display
         document.querySelectorAll("[id^='leadersPlayer']").forEach(element => {
