@@ -156,9 +156,9 @@ function decodeDraftFromUrl() {
         draft.leaders = JSON.parse(urlParams.get('leaders'));
 
         // Clear existing drafted leaders display
-        for (let player in draft.leaders) {
-            document.getElementById("leadersPlayer" + player).innerHTML = "";
-        }
+        document.querySelectorAll("[id^='leadersPlayer']").forEach(element => {
+            element.innerHTML = "";
+        });
 
         // Display drafted leaders
         for (let player in draft.leaders) {
