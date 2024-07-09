@@ -140,8 +140,12 @@ function decodeDraftFromUrl() {
     let url = new URL(window.location.href);
     let draft = {
         map: url.searchParams.get('map'),
-        leaders: url.searchParams.get('leaders') ? url.searchParams.get('leaders').split(',').map(Number) : []
+        leaders: url.searchParams.get('leaders') ? url.searchParams.get('leaders').split(',').map(Number) : [],
+        expansion: url.searchParams.get('expansion') || 'none'
     };
+
+    // Apply selected expansion
+    selectedExpansion = draft.expansion;
 
     if (draft.map !== null) {
         let draftedMap = maps[parseInt(draft.map)];
@@ -156,12 +160,13 @@ function decodeDraftFromUrl() {
         });
     }
 }
-
 function updateUrlWithDraft(draft) {
     let url = new URL(window.location.href);
     for (let key in draft) {
         url.searchParams.set(key, draft[key]);
     }
+    // Include selected expansion in the URL
+    url.searchParams.set('expansion', selectedExpansion);
     window.history.pushState({}, '', url);
 
     // For debugging: Display the URL under the "share url" button
