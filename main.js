@@ -530,7 +530,7 @@ function updateUrlWithDraft(draft) {
     }
 
     url.searchParams.set('expansion', selectedExpansion);
-	url.searchParams.set('map', draft[key]);
+	url.searchParams.set('map', draft[map]);
     window.history.pushState({}, '', url);
 }
 
