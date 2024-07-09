@@ -437,7 +437,7 @@ function draftMap() {
 	mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
 
     // Update URL with drafted map
-    updateUrlWithDraft({ map: maps.indexOf(draftedMap) });
+    updateUrlWithDraft({ map: draftedMap });
 }
 
 // player dlc preferences have also been chosen - draft leaders
@@ -530,7 +530,7 @@ function updateUrlWithDraft(draft) {
     }
 
     url.searchParams.set('expansion', selectedExpansion);
-	url.searchParams.set('map', draftedMap)
+	url.searchParams.set('map')
     window.history.pushState({}, '', url);
 }
 
