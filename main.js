@@ -183,34 +183,6 @@ function decodeDraftFromUrl() {
     
 }
 
-/*
-function decodeDraftFromUrl() {
-    let url = new URL(window.location.href);
-    let draft = {
-        map: url.searchParams.get('map'),
-        leaders: url.searchParams.get('leaders') ? url.searchParams.get('leaders').split(',').map(Number) : [],
-        expansion: url.searchParams.get('expansion')
-    };
-
-    if (draft.expansion !== null) {
-		selectExpansion(draft.expansion);
-	}
-
-    if (draft.map !== null) {
-        let draftedMap = maps[parseInt(draft.map)];
-        let mapDisplay = document.getElementById("map");
-        mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
-    }
-
-    if (draft.leaders.length > 0) {
-        draft.leaders.forEach((leaderIndex, player) => {
-            let draftedLeader = leaders[leaderIndex];
-            document.getElementById("leadersPlayer" + (player + 1)).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
-        });
-    }
-}
-*/
-
 document.getElementById('shareUrlButton').addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
         alert('URL copied to clipboard!');
@@ -449,80 +421,6 @@ function draftMap() {
     updateUrlWithDraft({ map: maps.indexOf(draftedMap) });
 }
 
-/* player dlc preferences have also been chosen - draft leaders
-function draft() {
-	let expansion = selectedExpansion;
-	let offeredLeaders = []; // list of leaders that have already been offered
-    let draftResults = [];
-	// get banned leader checkboxes, as an array (not an HTMLCollection)
-	let bannedLeaderEls = [...document.getElementsByClassName("banCheckbox")];
-
-	for (let player = 1; player <= parseInt(document.getElementById("numberOfPlayers").value); player++) {
-		// find dlc prefernce for player
-		let playerPaywall = document.getElementById("dlcPlayer" + player).value;
-
-		// clear previously drafted leaders for player (if there were any)
-		document.getElementById("leadersPlayer" + player).innerHTML = "";
-
-        draftResults[player] = [];
-
-		for (let i = 1; i <= parseInt(document.getElementById("numberOfLeaders").value); i++) {
-			// filter to only include valid leaders
-			let leadersPool = leaders.filter(leader => {
-				// check leader expansion
-				if (leader.expansion == "Rise and Fall" && expansion == "none") {
-					return false;
-				}
-				if (leader.expansion == "Gathering Storm" && (expansion == "none" || expansion == "Rise and Fall")) {
-					return false;
-				}
-
-				// check leader paywall
-				if (leader.paywall == "Base Game DLC" && playerPaywall == "none") {
-					return false;
-				}
-				if (leader.paywall == "Frontier Pass" && (playerPaywall == "none" || playerPaywall == "Base Game DLC")) {
-					return false;
-				}
-				if (leader.paywall == "Leader Pass" && playerPaywall != "Leader Pass") {
-					return false;
-				}
-
-				// check if leader is banned
-				if (bannedLeaderEls.findIndex(leaderCheckbox => leaderCheckbox.value == leader.name + " [" + leader.civilization + "]" && leaderCheckbox.checked) != -1) {
-					return false;
-				}
-
-				// check if leader has already been picked
-				// tbd extra settings :)
-				if (offeredLeaders.findIndex(offeredLeader => offeredLeader.name == leader.name || offeredLeader.civilization == leader.civilization) != -1) {
-					return false;
-				}
-
-				return true;
-			});
-
-			// pick random from leaders pool
-			let draftedLeader = leadersPool[getRandomInt(0, leadersPool.length - 1)];
-			if (typeof draftedLeader == "undefined") {
-				document.getElementById("leadersPlayer" + player).innerHTML += "Not enough available leaders<br>";
-			}
-			else {
-                offeredLeaders.push(draftedLeader);
-                draftResults[player].push(leaders.indexOf(draftedLeader));
-				// show leader to player
-				document.getElementById("leadersPlayer" + player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
-			}
-		}
-	}
-
-    // Update URL with drafted leaders
-    updateUrlWithDraft({ leaders: draftResults });
-
-	// document.getElementById("shareUrlButton").style.display = "block";
-}
-*/
-
 function draft() {
     let expansion = selectedExpansion;
     let offeredLeaders = []; // list of leaders that have already been offered
@@ -530,7 +428,7 @@ function draft() {
 
     // Get banned leader checkboxes, as an array (not an HTMLCollection)
     let bannedLeaderEls = [...document.getElementsByClassName("banCheckbox")];
-
+	playersSelected();
     for (let player = 1; player <= parseInt(document.getElementById("numberOfPlayers").value); player++) {
         // Find DLC preference for player
         let playerPaywall = document.getElementById("dlcPlayer" + player).value;
@@ -592,7 +490,6 @@ function draft() {
     updateUrlWithDraft({ leaders: draftResults });
 }
 
-
 function updateUrlWithDraft(draft) {
     let url = new URL(window.location.href);
 	for (let key in draft) {
@@ -608,29 +505,6 @@ function updateUrlWithDraft(draft) {
     url.searchParams.set('expansion', selectedExpansion);
     window.history.pushState({}, '', url);
 }
-
-/*
-function updateUrlWithDraft(draft) {
-    let url = new URL(window.location.href);
-
-    // Clear existing leader parameters to avoid duplicates
-    url.searchParams.delete('leaders');
-    for (let key in draft.leaders) {
-        url.searchParams.delete(`player${key}`);
-    }
-
-    // Append each player's drafted leaders
-    for (let player in draft.leaders) {
-        if (draft.leaders[player].length > 0) {
-            url.searchParams.set(`player${player}`, draft.leaders[player].join(','));
-        }
-    }
-
-    url.searchParams.set('expansion', selectedExpansion);
-	url.searchParams.set('map', draft[maps]);
-    window.history.pushState({}, '', url);
-}
-*/
 
 // inclusive
 function getRandomInt(min, max) {
