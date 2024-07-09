@@ -1,4 +1,4 @@
-let leaders = [
+const leaders = [
 	{ name: "Abraham Lincoln", civilization: "American", paywall: "Leader Pass", expansion: "none", banned: false, img: "9/97/Abraham_Lincoln_(Civ6).png" },
 	{ name: "Alexander", civilization: "Macedonian", paywall: "Base Game DLC", expansion: "none", banned: false, img: "3/33/Alexander_(Civ6).png" },
 	{ name: "Amanitore", civilization: "Nubian", paywall: "Base Game DLC", expansion: "none", banned: false, img: "b/b8/Amanitore_(Civ6).png" },
@@ -78,7 +78,7 @@ let leaders = [
 	{ name: "Yongle", civilization: "Chinese", paywall: "Leader Pass", expansion: "none", banned: false, img: "5/5a/Yongle_%28Civ6%29.png" },
 ];
 
-let maps = [
+const maps = [
 	{ name: "4-Leaf Clover", expansion: "none", img: "e/e9/Map_4_Leaf_Clover_%28Civ6%29.png" },
 	{ name: "6-Armed Snowflake", expansion: "none", img: "4/4a/Map_6_Armed_Snowflake_%28Civ6%29.png" },
 	{ name: "Archipelago", expansion: "Rise and Fall", img: "3/35/Map_Archipelago_%28Civ6%29.png" },
@@ -467,7 +467,7 @@ function draft() {
 				offeredLeaders.push(draftedLeader);
 				// show leader to player
 				document.getElementById("leadersPlayer" + player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
-				draftResults.push({ player, leader: draftedLeader });
+                draftResults.push(leaders.indexOf(draftedLeader));
 			}
 		}
 	}
