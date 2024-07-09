@@ -176,6 +176,10 @@ select:active,
 	margin: 1rem;
 }
 
+#shareUrlButton {
+	display: none;
+}
+
 #columns {
 	border-radius: 25px;
 	border: 2px solid var(--highlightBackgroundColor);
