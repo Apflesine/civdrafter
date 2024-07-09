@@ -160,18 +160,6 @@ function decodeDraftFromUrl() {
         });
     }
 }
-function updateUrlWithDraft(draft) {
-    let url = new URL(window.location.href);
-    for (let key in draft) {
-        url.searchParams.set(key, draft[key]);
-    }
-    // Include selected expansion in the URL
-    url.searchParams.set('expansion', selectedExpansion);
-    window.history.pushState({}, '', url);
-
-    // For debugging: Display the URL under the "share url" button
-    document.getElementById("debugUrl").textContent = url.toString();
-}
 
 document.getElementById('shareUrlButton').addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -483,26 +471,15 @@ function draft() {
 	document.getElementById("shareUrlButton").style.display = "block";
 }
 
-function updateDraftUrl(draftedMap, draftedLeaders) {
-    const currentUrl = window.location.origin + window.location.pathname;
-    let newUrl = `${currentUrl}?`;
-
-    if (draftedMap) {
-        const encodedMap = maps.findIndex(map => map.name === draftedMap.name);
-        newUrl += `map=${encodedMap}&`;
+function updateUrlWithDraft(draft) {
+    let url = new URL(window.location.href);
+    for (let key in draft) {
+        url.searchParams.set(key, draft[key]);
     }
-
-    if (draftedLeaders) {
-        const encodedLeaders = draftedLeaders.map(draft => `${draft.player}-${leaders.findIndex(leader => leader.name === draft.leader.name)}`).join(',');
-        newUrl += `leaders=${encodedLeaders}`;
-    }
-
-    window.history.pushState(null, '', newUrl);
+    // Include selected expansion in the URL
+    url.searchParams.set('expansion', selectedExpansion);
+    window.history.pushState({}, '', url);
 }
-
-document.getElementById("shareUrlButton").addEventListener("click", () => {
-    updateUrlWithDraft({ map: null, leaders: [] });
-});
 
 // inclusive
 function getRandomInt(min, max) {
