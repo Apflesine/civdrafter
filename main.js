@@ -452,7 +452,6 @@ function draft() {
     let draftResults = [];
 	// get banned leader checkboxes, as an array (not an HTMLCollection)
 	let bannedLeaderEls = [...document.getElementsByClassName("banCheckbox")];
-    let draftResults = [];
 
 	for (let player = 1; player <= parseInt(document.getElementById("numberOfPlayers").value); player++) {
 		// find dlc prefernce for player
@@ -521,7 +520,7 @@ function draft() {
 
 function updateUrlWithDraft(draft) {
     let url = new URL(window.location.href);
-	
+
     // Append each drafted leader with its corresponding player
     draft.leaders.forEach(drafted => {
         url.searchParams.append('leaders', drafted.leaderIndex);
