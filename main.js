@@ -137,48 +137,43 @@ window.onload = () => {
 };
 
 function decodeDraftFromUrl() {
-    let url = new URL(window.location.href);
-    let draft = {
-        map: url.searchParams.get('map'),
-        leaders: url.searchParams.get('leaders') ? url.searchParams.get('leaders').split(',').map(Number) : [],
-        expansion: url.searchParams.get('expansion') || 'none'
-    };
+    const urlParams = new URLSearchParams(window.location.search);
+    const mapIndex = urlParams.get('map');
+    const expansion = urlParams.get('expansion');
+    const leaders = {};
 
-    // Apply selected expansion
-    selectedExpansion = draft.expansion;
-    selectExpansion(draft.expansion);
+    // Get expansion and select it
+    if (expansion) {
+        selectExpansion(expansion);
+    }
 
-    if (draft.map !== null) {
-        let draftedMap = maps[parseInt(draft.map)];
+    // Get map and display it
+    if (mapIndex !== null) {
+        let draftedMap = maps[mapIndex];
         let mapDisplay = document.getElementById("map");
         mapDisplay.innerHTML = " <img src='https://static.wikia.nocookie.net/civilization/images/" + draftedMap.img + "' class='mapIcon'>" + draftedMap.name;
     }
 
-    if (draft.leaders.length > 0) {
-        // Clear previously displayed leaders
-        let leadersByPlayer = {};
+    // Get leaders for each player and display them
+    urlParams.forEach((value, key) => {
+        if (key.startsWith('player')) {
+            const player = key.replace('player', '');
+            leaders[player] = value.split(',').map(index => parseInt(index));
+        }
+    });
 
-        // Group drafted leaders by player
-        draft.leaders.forEach((leaderIndex, index) => {
-            let player = url.searchParams.get('player' + (index + 1)) || '1'; // Default to player 1 if no playerX parameter is found
-            if (!leadersByPlayer[player]) {
-                leadersByPlayer[player] = [];
-            }
-            leadersByPlayer[player].push(leaders[leaderIndex]);
-        });
-
-        // Display drafted leaders for each player
-        Object.keys(leadersByPlayer).forEach(player => {
-            let leaderDisplay = document.getElementById("leadersPlayer" + player);
-            if (leaderDisplay) {
-                leaderDisplay.innerHTML = ""; // Clear previous content
-                leadersByPlayer[player].forEach(draftedLeader => {
-                    leaderDisplay.innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
-                });
-            }
+    for (let player in leaders) {
+        let playerLeaders = leaders[player];
+        let playerContainer = document.getElementById("leadersPlayer" + player);
+        playerContainer.innerHTML = ""; // Clear previous contents
+        playerLeaders.forEach(leaderIndex => {
+            let leader = leaders[leaderIndex];
+            playerContainer.innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + leader.img + "' class='leaderIcon'>" + leader.name + " [" + leader.civilization + "]<br>";
         });
     }
 }
+
+
 /*
 function decodeDraftFromUrl() {
     let url = new URL(window.location.href);
@@ -460,6 +455,8 @@ function draft() {
 		// clear previously drafted leaders for player (if there were any)
 		document.getElementById("leadersPlayer" + player).innerHTML = "";
 
+        draftResults[player] = [];
+
 		for (let i = 1; i <= parseInt(document.getElementById("numberOfLeaders").value); i++) {
 			// filter to only include valid leaders
 			let leadersPool = leaders.filter(leader => {
@@ -502,8 +499,8 @@ function draft() {
 				document.getElementById("leadersPlayer" + player).innerHTML += "Not enough available leaders<br>";
 			}
 			else {
-				offeredLeaders.push(draftedLeader);
-                draftResults.push({ player: player, leaderIndex: leaders.indexOf(draftedLeader) });
+                offeredLeaders.push(draftedLeader);
+                draftResults[player].push(leaders.indexOf(draftedLeader));
 				// show leader to player
 				document.getElementById("leadersPlayer" + player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
 			}
@@ -519,28 +516,23 @@ function draft() {
 function updateUrlWithDraft(draft) {
     let url = new URL(window.location.href);
 
-    // Append each drafted leader with its corresponding player
-    draft.leaders.forEach(drafted => {
-        url.searchParams.append('leaders', drafted.leaderIndex);
-        url.searchParams.set('player' + drafted.player, draft.leaders.indexOf(drafted.leaderIndex));
-    });
-
-    url.searchParams.set('expansion', selectedExpansion);
-    window.history.pushState({}, '', url);
-
-    // Print URL for debugging
-    document.getElementById("shareUrl").innerText = url.href;
-}
-
-
-function updateUrlWithDraft(draft) {
-    let url = new URL(window.location.href);
-    for (let key in draft) {
-        url.searchParams.set(key, draft[key]);
+    // Clear existing leader parameters to avoid duplicates
+    url.searchParams.delete('leaders');
+    for (let key in draft.leaders) {
+        url.searchParams.delete(`player${key}`);
     }
+
+    // Append each player's drafted leaders
+    for (let player in draft.leaders) {
+        if (draft.leaders[player].length > 0) {
+            url.searchParams.set(`player${player}`, draft.leaders[player].join(','));
+        }
+    }
+
     url.searchParams.set('expansion', selectedExpansion);
     window.history.pushState({}, '', url);
 }
+
 
 // inclusive
 function getRandomInt(min, max) {
