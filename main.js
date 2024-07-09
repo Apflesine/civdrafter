@@ -156,19 +156,29 @@ function decodeDraftFromUrl() {
 
     if (draft.leaders.length > 0) {
         // Clear previously displayed leaders
-        for (let player = 1; player <= parseInt(document.getElementById("numberOfPlayers").value); player++) {
-            document.getElementById("leadersPlayer" + player).innerHTML = "";
-        }
+        let leadersByPlayer = {};
+
+        // Group drafted leaders by player
+        draft.leaders.forEach((leaderIndex, index) => {
+            let player = url.searchParams.get('player' + (index + 1)) || '1'; // Default to player 1 if no playerX parameter is found
+            if (!leadersByPlayer[player]) {
+                leadersByPlayer[player] = [];
+            }
+            leadersByPlayer[player].push(leaders[leaderIndex]);
+        });
 
         // Display drafted leaders for each player
-        draft.leaders.forEach((leaderIndex, index) => {
-            let player = index % parseInt(document.getElementById("numberOfPlayers").value) + 1;
-            let draftedLeader = leaders[leaderIndex];
-            document.getElementById("leadersPlayer" + player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
+        Object.keys(leadersByPlayer).forEach(player => {
+            let leaderDisplay = document.getElementById("leadersPlayer" + player);
+            if (leaderDisplay) {
+                leaderDisplay.innerHTML = ""; // Clear previous content
+                leadersByPlayer[player].forEach(draftedLeader => {
+                    leaderDisplay.innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
+                });
+            }
         });
     }
 }
-
 /*
 function decodeDraftFromUrl() {
     let url = new URL(window.location.href);
@@ -439,7 +449,7 @@ function draftMap() {
 function draft() {
 	let expansion = selectedExpansion;
 	let offeredLeaders = []; // list of leaders that have already been offered
-
+    let draftResults = [];
 	// get banned leader checkboxes, as an array (not an HTMLCollection)
 	let bannedLeaderEls = [...document.getElementsByClassName("banCheckbox")];
     let draftResults = [];
@@ -450,6 +460,8 @@ function draft() {
 
 		// clear previously drafted leaders for player (if there were any)
 		document.getElementById("leadersPlayer" + player).innerHTML = "";
+
+        offeredLeaders[player] = [];
 
 		for (let i = 1; i <= parseInt(document.getElementById("numberOfLeaders").value); i++) {
 			// filter to only include valid leaders
@@ -494,7 +506,7 @@ function draft() {
 			}
 			else {
 				offeredLeaders.push(draftedLeader);
-                draftResults.push(leaders.indexOf(draftedLeader));
+                draftResults.push({ player: player, leaderIndex: leaders.indexOf(draftedLeader) });
 				// show leader to player
 				document.getElementById("leadersPlayer" + player).innerHTML += "<img src='https://static.wikia.nocookie.net/civilization/images/" + draftedLeader.img + "' class='leaderIcon'>" + draftedLeader.name + " [" + draftedLeader.civilization + "]<br>";
 			}
@@ -509,10 +521,26 @@ function draft() {
 
 function updateUrlWithDraft(draft) {
     let url = new URL(window.location.href);
+	
+    // Append each drafted leader with its corresponding player
+    draft.leaders.forEach(drafted => {
+        url.searchParams.append('leaders', drafted.leaderIndex);
+        url.searchParams.set('player' + drafted.player, draft.leaders.indexOf(drafted.leaderIndex));
+    });
+
+    url.searchParams.set('expansion', selectedExpansion);
+    window.history.pushState({}, '', url);
+
+    // Print URL for debugging
+    document.getElementById("shareUrl").innerText = url.href;
+}
+
+
+function updateUrlWithDraft(draft) {
+    let url = new URL(window.location.href);
     for (let key in draft) {
         url.searchParams.set(key, draft[key]);
     }
-    // Include selected expansion in the URL
     url.searchParams.set('expansion', selectedExpansion);
     window.history.pushState({}, '', url);
 }
