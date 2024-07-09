@@ -514,26 +514,19 @@ function draft() {
 
 function updateUrlWithDraft(draft) {
     let url = new URL(window.location.href);
-
-    // Clear existing leader parameters to avoid duplicates
-    url.searchParams.delete('leaders');
-    for (let key in draft.leaders) {
-        url.searchParams.delete(`player${key}`);
-    }
-
-    // Append each player's drafted leaders
-    for (let player in draft.leaders) {
-        if (draft.leaders[player].length > 0) {
-            url.searchParams.set(`player${player}`, draft.leaders[player].join(','));
+    for (let key in draft) {
+        if (key === "leaders") {
+            // Serialize leaders as JSON
+            url.searchParams.set(key, JSON.stringify(draft[key]));
+        } else {
+            // Directly set other parameters
+            url.searchParams.set(key, draft[key]);
         }
     }
-
+    // Add expansion to the URL
     url.searchParams.set('expansion', selectedExpansion);
-	url.searchParams.set('map', draft[maps]);
     window.history.pushState({}, '', url);
 }
-
-
 
 /*
 function updateUrlWithDraft(draft) {
