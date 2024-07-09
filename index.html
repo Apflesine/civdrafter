@@ -6,7 +6,7 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
-  <link rel="stylesheet" href="style.css?version=32">
+  <link rel="stylesheet" href="style.css?version=33">
 
   <!-- favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
@@ -89,11 +89,15 @@
           <button id="draftButton" onclick="draft()">Draft Leaders</button>
         </p>
 
-        <p id="map"></p>
+        <div id="draftArea">
+          <p id="map"></p>
+          <p id="playerList"></p>
+        </div>
 
-        <p id="playerList"></p>
-
-        <button id="shareUrlButton">Share URL</button>
+        <p id="shareButtons">
+          <button id="shareUrlButton">Share URL</button>
+          <button id="shareScreenshotButton">Share Screenshot</button>
+        </p>
       </div>
     </div>
 
@@ -109,8 +113,8 @@
       </div>
     </div>
   </div>
-
-  <script src="./main.js?version=60"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="./main.js?version=61"></script>
 
 </body>
 

@@ -179,6 +179,7 @@ function decodeDraftFromUrl() {
                 }
             });
         }
+		document.getElementById("shareButtons").style.display = "flex";
 	}
     
 }
@@ -488,6 +489,7 @@ function draft() {
 
     // Update URL with drafted leaders and map
     updateUrlWithDraft({ leaders: draftResults });
+	document.getElementById("shareButtons").style.display = "flex";
 }
 
 function updateUrlWithDraft(draft) {
@@ -504,6 +506,42 @@ function updateUrlWithDraft(draft) {
     // Add expansion to the URL
     url.searchParams.set('expansion', selectedExpansion);
     window.history.pushState({}, '', url);
+}
+
+document.getElementById('shareUrlButton').addEventListener('click', () => {
+	const shareUrl = encodeDraftSelection();
+	navigator.clipboard.writeText(shareUrl).then(() => {
+		alert('URL copied to clipboard!');
+	});
+});
+        // Check if Clipboard API is supported
+        if (!navigator.clipboard || typeof ClipboardItem === 'undefined') {
+            document.getElementById('shareScreenshotButton').style.display = 'none';
+        }
+
+        document.getElementById('shareScreenshotButton').addEventListener('click', () => {
+            html2canvas(document.getElementById('draftArea')).then(canvas => {
+                canvas.toBlob(blob => {
+                    const item = new ClipboardItem({ 'image/png': blob });
+                    navigator.clipboard.write([item]).then(() => {
+                        alert('Screenshot copied to clipboard!');
+                    }).catch(err => {
+                        console.error('Could not copy image: ', err);
+                    });
+                });
+            }).catch(err => {
+                console.error('Could not capture screenshot: ', err);
+            });
+        });
+
+function copyToClipboard(url) {
+	const tempInput = document.createElement('input');
+	document.body.appendChild(tempInput);
+	tempInput.value = url;
+	tempInput.select();
+	document.execCommand('copy');
+	document.body.removeChild(tempInput);
+	alert('Screenshot URL copied to clipboard!');
 }
 
 // inclusive

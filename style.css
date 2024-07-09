@@ -176,8 +176,10 @@ select:active,
 	margin: 1rem;
 }
 
-#shareUrlButton {
+#shareButtons {
 	display: none;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 #columns {
@@ -248,7 +250,7 @@ li {
 	--textColor: #FFF;
 }
 
-body {
+body,#draftArea {
 	background-color: var(--backgroundColor);
 	color: var(--textColor);
 	transition: color var(--transitionDuration), background-color var(--transitionDuration), border-color var(--transitionDuration);
